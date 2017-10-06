@@ -67,6 +67,7 @@ public class Main {
                         string[i] = string[i + 1];
                     }
                     string[string.length - 1] = null;
+                    count--;
 
                 }
                 break;
