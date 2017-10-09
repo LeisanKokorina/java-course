@@ -5,72 +5,52 @@ import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.io.IOException;
 import java.util.Scanner;
+ class Main {
 
-public class Main {
 
     public static void main(String[] args) throws IOException {
-        Document document = new Document();
-
-        // Обеспечить функционал:
-        // добавить строку в конец, в начало, в заданную
-        // позицию, заменить строку, удалить строку, вывести весь документ
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Сколько документов может быть создано?");
+        int docSize = scanner.nextInt();
+        Document arrayDocuments[] = new Document[docSize];
+        Document[] document =  new Document[docSize];
         while (true){
-            Menu.showMenu();
+            DocumentsArray.showMenu();
             int command = scanner.nextInt();
-            switch (command) {
+            switch (command){
                 case 1: {
-                    document.showDocument();
+                    DocumentsArray.showdocumentsArray(arrayDocuments);
                 }
                 break;
                 case 2: {
-                    if (document.count == document.lines.length) {
-                        System.err.println("Нет места");
-                        break;
-                    }
-                    System.out.println("Введите строку: ");
-                    String newLine = scanner.next();
-                    document.addLineToBegin(newLine);
+                    DocumentsArray.addDocument(arrayDocuments, document);
                 }
                 break;
                 case 3: {
-                    if (document.count == document.lines.length) {
-                        System.err.println("Нет места");
-                        break;
-                    }
-                    System.out.println("Введите строку: ");
-                    String newLine = scanner.next();
-                    document.addLineToEnd(newLine);
-
+                    System.out.println("Какой документ необходимо удалить?");
+                    int numberForDelete = scanner.nextInt();
+                    DocumentsArray.deleteDocument(arrayDocuments, numberForDelete);
                 }
                 break;
-                case 4: {
-                    System.out.println("Какую строку Вы хотите удалить?");
-                    int number = scanner.nextInt();
-                    document.deleteLine(number);
-
-
+                case 4:{
+                    System.out.println("Какой документ необходимо редактировать?");
+                    int numberForEdit = scanner.nextInt();
+                    if (numberForEdit > arrayDocuments.length - 1){
+                        System.out.println("Такого документа не существует!");
+                    }
+                    else {
+                        MainForDocuments.workWithDocument(arrayDocuments[numberForEdit]);
+                    }
                 }
                 break;
                 case 5: {
-                    System.out.println("Какую строку Вы хотите изменить?");
-                    int number = scanner.nextInt();
-                    System.out.println("Введите новую строку");
-                    String newLine = scanner.next();
-                    document.lines[number] = newLine;
-                    document.removeLine(newLine,number);
-                }
-                break;
-                case 6: {
-                    int number = scanner.nextInt();
-                    document.lines[number] = null;
-                    document.clearLine(number);
-                }
-                case 7: {
                     System.exit(0);
                 }
-
             }
+
         }
     }
-}
+
+    }
+//}
+

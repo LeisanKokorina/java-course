@@ -9,6 +9,6 @@ public class Menu {
         System.out.println("4. Удалить строку");
         System.out.println("5. Заменить строку");
         System.out.println("6. Очистить строку");
-        System.out.println("7. Выход");
+        System.out.println("7. Выход в основное меню");
     }
 }
