@@ -3,19 +3,20 @@ package ru.itpark;
 import java.time.LocalTime;
 
 public class Program extends Channel {
-    private String name;
+    private String programsName;
     private LocalTime beginTime;
     private LocalTime endTime;
 
-    public Program(Program[] programs, String channelsName, String name, LocalTime beginTime, LocalTime endTime) {
-        super(programs, channelsName);
-        this.name = name;
+
+    public Program(Channel[] channels, Program[] programs, String channelsName, String programsName, LocalTime beginTime, LocalTime endTime) {
+        super(channels, programs, channelsName);
+        this.programsName = programsName;
         this.beginTime = beginTime;
         this.endTime = endTime;
     }
 
-    public String getName() {
-        return name;
+    public String getProgramsName() {
+        return programsName;
     }
 
     public LocalTime getBeginTime() {

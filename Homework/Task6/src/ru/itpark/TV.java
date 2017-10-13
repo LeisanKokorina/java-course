@@ -1,33 +1,34 @@
 package ru.itpark;
 
-public class TV extends RemoteController{
+public class TV {
     private Channel channels[];
-
-
-
-    private final static TV singleTV;
-
-    private TV() {
-        System.out.println("TV on");
-    }
-
-    static {
-        // создали объект
-        singleTV = new TV();
-    }
-
-    public static TV getSingleTV() {
-        return singleTV;
-    }
+   // Channel channel = new Channel(1)
 
     public TV(Channel[] channels) {
         this.channels = channels;
     }
 
-    void showChannels(Channel[] channels){
-        System.out.println("Список каналов");
-        for(int i=0; i<channelsName.length;i++){
-            System.out.println(channelsName[i].);
-        }
+    public Channel[] getChannels() {
+        return channels;
     }
+
+    private final static TV singleTV;
+
+    private TV() {
+        System.out.println("TV here");
+    }
+
+    static {
+
+        singleTV = new TV();
+    }
+
+    public static TV getSingleTV() {
+
+        return singleTV;
+    }
+
+
+
+
 }
