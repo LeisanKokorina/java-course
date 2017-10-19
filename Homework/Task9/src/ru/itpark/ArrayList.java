@@ -1,7 +1,6 @@
 package ru.itpark;
 
 
-
 public class ArrayList implements List, Iterator {
     private int count = 0;
     int[] array = new int[10];
@@ -42,8 +41,11 @@ public class ArrayList implements List, Iterator {
     }
 
     @Override
-    public void addByIndex(int index) {
+    public void addByIndex( int index, int element) {
+        for (int i = 0; i < array.length; i++){
+            array[index] = element;
 
+        }
     }
 
     @Override
