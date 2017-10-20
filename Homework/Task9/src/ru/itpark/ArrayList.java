@@ -59,7 +59,12 @@ public class ArrayList implements List, Iterator {
     }
 
     @Override
-    public boolean hasNext() {
-        return false;
+    public boolean hasNext(int[] array) {
+        if (count < array.length) {
+            return true;
+        } else {
+            count = 0;
+            return false;
+        }
     }
 }
