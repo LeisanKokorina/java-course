@@ -1,4 +1,4 @@
-package ru.itpark;
+package ru.itpark.ArrayList;
 
 
 public class ArrayList implements List {

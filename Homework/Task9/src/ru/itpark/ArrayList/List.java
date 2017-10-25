@@ -1,4 +1,4 @@
-package ru.itpark;
+package ru.itpark.ArrayList;
 
 public interface List {
     void add(int element);

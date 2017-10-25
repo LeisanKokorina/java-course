@@ -1,7 +1,7 @@
-package ru.itpark;
+package ru.itpark.ArrayList;
 
 
-public class Main {
+public class MainArrayList {
 
     public static void main(String[] args) {
         ArrayList list = new ArrayList();
