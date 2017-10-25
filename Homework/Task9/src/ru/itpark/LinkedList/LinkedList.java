@@ -25,36 +25,48 @@ public class LinkedList implements List {
     @Override
     public void addToEnd(int element) {
         Node newNode = new Node(element);
-        Node current =  head;
-        while (current.next != null){
-            current = current.next;
+
+        if(head == null){
+            head = newNode;
+        }else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
         }
-        current.next = newNode;
     }
 
     @Override
     public void addByPosition(int position, int element) {
-        Node previous = head;
-        count = 1;
-        while(count < position - 1){
-            previous = previous.next;
-            count++;
-        }
-        Node current = previous.next;
-
         Node newNode = new Node(element);
-        previous.next = newNode;
-        newNode.next = current;
+        if(position > lengthOfList() || position < 1){
+            System.err.println("Linked list is empty");
+            head = newNode;
+        }else {
+            Node previous = head;
+            count = 1;
+            while (count < position - 1) {
+                previous = previous.next;
+                count++;
+            }
+            Node current = previous.next;
+
+            // Node newNode = new Node(element);
+            previous.next = newNode;
+            newNode.next = current;
+        }
     }
 
     @Override
-    public void lengthOfList() {
+    public int lengthOfList() {
         Node current = head;
         count = 0;
         while(current != null){
             count++;
             current = current.next;
         }
+        return count;
     }
 
     @Override
@@ -71,8 +83,20 @@ public class LinkedList implements List {
     }
 
     @Override
-    public void deleteByElement(int element) {
-
+    public void reverseList() {
+        if(lengthOfList() == 0){
+            System.err.println("Linked list is empty");
+        }
+        Node current = head;
+        Node previous = null;
+        Node next;
+        while (current != null){
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        head = previous;
     }
 
     @Override

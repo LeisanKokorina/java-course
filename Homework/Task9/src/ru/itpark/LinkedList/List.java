@@ -4,9 +4,9 @@ public interface List {
     void addToBegin(int element);
     void addToEnd(int element);
     void addByPosition( int position, int element);
-    void lengthOfList();
+    int lengthOfList();
     void deleteByPosition(int position);
-    void deleteByElement(int element);
+    void reverseList();
 
 
     Iterator iterator();
