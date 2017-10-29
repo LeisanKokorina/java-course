@@ -36,7 +36,7 @@ public class DataReader {
         while (currentByte != -1) {
 
             if (currentByte >= 'A' && currentByte <= 'Z' ||
-                    currentByte >= 'a' && currentByte <= 'z'|| currentByte == ' ') {
+                    currentByte >= 'a' && currentByte <= 'z'  ) {
 
                 currentWord[lettersCount] = (char)currentByte;
                 lettersCount++;

@@ -5,19 +5,33 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        DataReader reader = new DataReader("namesList.txt");
+        DataReader reader = new DataReader("Names.txt");
+        DataReader numbersReader = new DataReader("Names.txt");
+
+        LinkedList age[] = new LinkedList[100];
+        for (int i = 0; i < age.length; i++) {
+            age[i] = new LinkedList();
+
+        }
         String word = reader.readString();
-        DataReader numbersReader = new DataReader("namesList.txt");
         int number = numbersReader.readInteger();
-        while (word.length() > 0 && number != 0) {
-            System.out.println(word + " " + number);
+        age[number].addToEnd(word);
+        while (number != 0) {
+
             word = reader.readString();
             number = numbersReader.readInteger();
+            age[number].addToEnd(word);
+
         }
-
-        int age[] = new int[]
-
-
+        for (int i = 1; i < age.length; i++) {
+            age[i].addToEnd(String.valueOf(i));
+        }
+        for (int i = 0 ; i < age.length; i++) {
+            Iterator iterator = age[i].iterator();
+            while (iterator.hasNext()) {
+                System.out.println(i + " " + iterator.next() );
+            }
+        }
 
     }
 }
