@@ -19,13 +19,7 @@ public class Rectangle {
         }
     }
 
-    public void setLength(int length) {
-        this.length = length;
-    }
 
-    public void setWeigth(int weigth) {
-        this.weigth = weigth;
-    }
 
     public int getLength() {
         return length;
