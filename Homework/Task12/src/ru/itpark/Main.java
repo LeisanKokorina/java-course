@@ -4,24 +4,36 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LinkedList objectList = new LinkedList();
         DataReader reader = new DataReader("HumanNames.txt");
         DataReader numbersReader = new DataReader("HumanNames.txt");
 
+        ArrayList arrayList = new ArrayList();
 
         String name = reader.readString();
         int age = numbersReader.readInteger();
 
-        ArrayList ageList = new ArrayList();
-        for (int i = 0; i < ageList.iterator(); i++) {
-            ageList = new LinkedList();
+        Human human = new Human(name, age);
+        arrayList.addByIndex(age,human);
 
+        while (age != 0){
+            name = reader.readString();
+            age = numbersReader.readInteger();
+
+            Human humans = new Human(name, age);
+            arrayList.addByIndex(age, humans);
         }
 
-        ageList[ageList].addToEnd(name);
+        arrayList.printArray();
 
 
     }
+    public static void printList(List list) {
+        Iterator iterator = list.iterator();
 
+        if (iterator.hasNext()) {
+            while (iterator.hasNext()) {
+                System.out.print(iterator.next() + " ");
+            }
+        }
     }
 }
