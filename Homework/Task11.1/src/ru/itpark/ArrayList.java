@@ -33,7 +33,13 @@ public class ArrayList implements List {
         Main.printList(elements[0]);
     }
     public void connect(){
-
+        for(int i = 0; i < elements.length; i++){
+            elements[0].concat(elements[i]);
+        }
+        for(int i = elements.length - 1; i > 0 ;i--){
+            elements[i] = null;
+        }
+        count = 1;
     }
 
     @Override

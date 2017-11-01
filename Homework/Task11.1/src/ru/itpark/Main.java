@@ -22,7 +22,7 @@ public class Main {
             Human humans = new Human(name, age);
             arrayList.addByIndex(age, humans);
         }
-
+        arrayList.connect();
         arrayList.printArray();
 
 
