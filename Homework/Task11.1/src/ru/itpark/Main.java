@@ -1,11 +1,14 @@
 package ru.itpark;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
 
-        DataReader reader = new DataReader("HumanNames.txt");
-        DataReader numbersReader = new DataReader("HumanNames.txt");
+    public static void main(String[] args)throws IOException {
+
+        DataReader reader = new DataReader("name.txt");
+        DataReader numbersReader = new DataReader("name.txt");
 
         ArrayList arrayList = new ArrayList();
 
@@ -13,14 +16,14 @@ public class Main {
         int age = numbersReader.readInteger();
 
         Human human = new Human(name, age);
-        arrayList.addByIndex(age,human);
+        arrayList.addByIndex(human, age);
 
         while (age != 0){
             name = reader.readString();
             age = numbersReader.readInteger();
 
             Human humans = new Human(name, age);
-            arrayList.addByIndex(age, humans);
+            arrayList.addByIndex(humans, age);
         }
         arrayList.connect();
         arrayList.printArray();
@@ -36,4 +39,5 @@ public class Main {
             }
         }
     }
+
 }

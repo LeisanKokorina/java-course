@@ -15,31 +15,36 @@ public class ArrayList implements List {
         this.count = 0;
     }
 
+
+
     @Override
-    public void add(Object element) {
-        elements[count++] = (LinkedList) element;
-    }
-    @Override
-    public void addByIndex(int index, Object element) {
-        if(count < MAX_SIZE){
-            elements[index].add(element);
-        }else {
-            System.err.println("Места нет");
+    public void addByIndex( Object element, int index) {
+        if (count < MAX_SIZE) {
+            for (int i = count - 1; i >= index; i--) {
+                elements[i + 1] = elements[i];
+            }
+            elements[index] = (LinkedList) element;
+            count++;
+        } else {
+            System.err.println("Нет места");
         }
 
+
     }
+
+
 
     public void printArray() {
         Main.printList(elements[0]);
     }
     public void connect(){
-        for(int i = 0; i < elements.length; i++){
+        for(int i = 1; i < MAX_SIZE; i++){
             elements[0].concat(elements[i]);
         }
-        for(int i = elements.length - 1; i > 0 ;i--){
+        for(int i = MAX_SIZE - 1; i > 0 ;i--){
             elements[i] = null;
         }
-        count = 1;
+
     }
 
     @Override

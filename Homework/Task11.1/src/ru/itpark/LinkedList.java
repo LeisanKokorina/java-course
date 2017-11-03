@@ -15,49 +15,31 @@ public class LinkedList implements List {
     }
 
     @Override
-    public void add(Object element) {
+    public void addByIndex(Object element, int index) {
         Node newNode = new Node(element);
-        Node tail = null;
-        LinkedListIterator iterator = new LinkedListIterator();
-        while (iterator.hasNext()) {
-            tail = iterator.currentNode;
-            iterator.next();
+        Node current = head;
+        Node next = current.next;
+        if (index != 0) {
+            for (int i = 0; i < index - 1; i++) {
+                if (current.next != null) {
+                    current = next;
+                    next = current.next;
+                }
+            }
+            current.next = newNode;
+            newNode.next = next;
+        } else {
+            newNode.human = head.human;
+            head.next = newNode;
+            head.human = (Human) element;
+            newNode.next = next;
         }
-        tail.next = newNode;
         count++;
     }
 
-    @Override
-    public void addByIndex(int index, Object element) {
-        Node newNode = new Node(element);
-        if(index > lengthOfList() || index < 1){
-            System.err.println("Linked list is empty");
-            head = newNode;
-        }else {
-            Node previous = head;
-            count = 1;
-            while (count < index - 1) {
-                previous = previous.next;
-                count++;
-            }
-            Node current = previous.next;
-
-
-            previous.next = newNode;
-            newNode.next = current;
-        }
-    }
-    public int lengthOfList() {
-        Node current = head;
-        count = 0;
-        while(current != null){
-            count++;
-            current = current.next;
-        }
-        return count;
-    }
     public void concat(LinkedList otherList) {
         Node tail = null;
+        //Node headOtherList = otherList.getHead();
         LinkedListIterator iterator = new LinkedListIterator();
         if (head.human.getAge() != 0) {
             while (iterator.hasNext()) {
@@ -65,7 +47,10 @@ public class LinkedList implements List {
                 iterator.next();
             }
             tail.next = otherList.getHead();
-        } else head = otherList.getHead();
+        }else {
+            head = otherList.getHead();
+            count--;
+        }
     }
 
     @Override
