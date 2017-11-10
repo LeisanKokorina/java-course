@@ -12,20 +12,20 @@ public class Main {
 
         ArrayList arrayList = new ArrayList();
 
-        String name = reader.readString();
-        int age = numbersReader.readInteger();
+        String word = reader.readString();
+        int number = numbersReader.readInteger();
 
-        Human human = new Human(name, age);
-        arrayList.addByIndex(human, age);
+        Human human = new Human(word, number);
+        arrayList.addByIndex(human, number);
 
-        while (age != 0){
-            name = reader.readString();
-            age = numbersReader.readInteger();
+        while (number != 0 && human.getName()!= null){
+            word = reader.readString();
+            number = numbersReader.readInteger();
 
-            Human humans = new Human(name, age);
-            arrayList.addByIndex(humans, age);
+            Human humans = new Human(word, number);
+            arrayList.addByIndex(humans, number);
         }
-        arrayList.connect();
+        arrayList.connect(arrayList.getElements());
         arrayList.printArray();
 
 

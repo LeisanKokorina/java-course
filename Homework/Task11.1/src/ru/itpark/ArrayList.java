@@ -15,19 +15,24 @@ public class ArrayList implements List {
         this.count = 0;
     }
 
+    public LinkedList[] getElements() {
+        return elements;
+    }
 
+    @Override
+    public void addToEnd(Object element) {
+        if (count == elements.length) {
+            System.err.println("Нет места");
+
+        } else {
+            elements[count] = (LinkedList) element;
+            count++;
+        }
+    }
 
     @Override
     public void addByIndex( Object element, int index) {
-        if (count < MAX_SIZE) {
-            for (int i = count - 1; i >= index; i--) {
-                elements[i + 1] = elements[i];
-            }
-            elements[index] = (LinkedList) element;
-            count++;
-        } else {
-            System.err.println("Нет места");
-        }
+        elements[index].addToEnd(element);
 
 
     }
@@ -37,7 +42,7 @@ public class ArrayList implements List {
     public void printArray() {
         Main.printList(elements[0]);
     }
-    public void connect(){
+    public void connect(LinkedList elements[]){
         for(int i = 1; i < MAX_SIZE; i++){
             elements[0].concat(elements[i]);
         }

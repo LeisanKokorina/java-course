@@ -14,6 +14,10 @@ public class LinkedList implements List {
         return head;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     @Override
     public void addByIndex(Object element, int index) {
         Node newNode = new Node(element);
@@ -37,20 +41,33 @@ public class LinkedList implements List {
         count++;
     }
 
+    @Override
+    public void addToEnd(Object element) {
+        Node newNode = new Node(element);
+        //Node lastNode = null;
+        LinkedListIterator iterator = new LinkedListIterator();
+        while (iterator.hasNext()) {
+            newNode = iterator.currentNode;
+            iterator.next();
+        }
+        newNode.next = newNode;
+        count++;
+    }
+
     public void concat(LinkedList otherList) {
-        Node tail = null;
-        //Node headOtherList = otherList.getHead();
+        Node lastNode = null ;
         LinkedListIterator iterator = new LinkedListIterator();
         if (head.human.getAge() != 0) {
             while (iterator.hasNext()) {
-                tail = iterator.currentNode;
+                lastNode = iterator.currentNode;
                 iterator.next();
             }
-            tail.next = otherList.getHead();
-        }else {
+            lastNode.next = otherList.getHead();//nullpointerexception
+        } else {
             head = otherList.getHead();
             count--;
         }
+
     }
 
     @Override
