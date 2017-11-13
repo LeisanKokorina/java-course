@@ -7,11 +7,11 @@ public class DBMethods {
     public static Connection connection()throws SQLException{
         String name = "postgres";
         String password = "passslon42";
-        String url = "jdbc:postgresql:" + "//localhost:5432/task13_db";
-        Connection connection = DriverManager.getConnection(url, name, password);
-        return connection;
+        String url = "jdbc:postgresql://localhost:5432/task13_db";
+
+        return DriverManager.getConnection(url, name, password);
     }
-    public static void addOwner(String ownerName, int age){
+    public void addOwner(String ownerName, int age){
        try {
            Connection connection = DBMethods.connection();
            PreparedStatement preparedStatement = connection
@@ -19,35 +19,71 @@ public class DBMethods {
            preparedStatement.setString(1, ownerName);
            preparedStatement.setInt(2, age);
            preparedStatement.execute();
-       }catch (SQLException e){
-           throw new IllegalArgumentException(e);
+       }catch (SQLException e1){
+           throw new IllegalArgumentException(e1);
        }
     }
-    public static void addCar(String model, int number, int ownerId, String color){
+    public  void addCar(String model, int number, int ownerId, String color){
         try {
             Connection connection = DBMethods.connection();
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("INSERT INTO car(model, number, owner_Id, color) VALUES (?, ?, ?, ?)");
-            preparedStatement.setInt(1, model);
-            preparedStatement.setString(2, number);
-            preparedStatement.setString(3, ownerId);
-            preparedStatement.setInt(4, color);
+                    .prepareStatement("INSERT INTO car(number, model, color, owner_id) VALUES (?, ?, ?, ?)");
+            preparedStatement.setInt(1, number);
+            preparedStatement.setString(2, model);
+            preparedStatement.setString(3, color);
+            preparedStatement.setInt(4, ownerId);
             preparedStatement.execute();
-        } catch (SQLException e) {
-            throw new IllegalArgumentException(e);
+        } catch (SQLException e2) {
+            throw new IllegalArgumentException(e2);
+        }
+    }
+    public void showOwners(){
+        try{
+            Connection connection = DBMethods.connection();
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("SELECT * FROM owner");
+            preparedStatement.execute();
+
+        }catch (SQLException e3){
+            throw new IllegalArgumentException(e3);
+        }
+    }
+    public void showCars(){
+        try{
+            Connection connection = DBMethods.connection();
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("SELECT * FROM car");
+            preparedStatement.execute();
+
+        }catch (SQLException e4){
+            throw new IllegalArgumentException(e4);
+        }
+    }
+    public void allCarsOfTheOwner(int ownerId){
+        try {
+            Connection connection = DBMethods.connection();
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("SELECT * FROM car WHERE owner_id = (?)");
+            preparedStatement.setInt(1, ownerId);
+            preparedStatement.execute();
+        } catch (SQLException e5) {
+            throw new IllegalArgumentException(e5);
+        }
+    }
+    public void showCarsByColor(String color){
+        try{
+            Connection connection = DBMethods.connection();
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("SELECT * FROM car WHERE (?)");
+            preparedStatement.setString(1, color);
+            preparedStatement.execute();
+
+
+        } catch (SQLException e6) {
+            throw new IllegalArgumentException(e6);
         }
     }
 
 
-    Statement statement = connection.createStatement();
-    ResultSet resultSet = statement.executeQuery("SELECT * FROM owner ");
 
-        while (resultSet.next()) {
-        System.out.print(resultSet.getInt("id"));
-        System.out.println(" " + resultSet.getString("name"));
-    }
-
-    Scanner scanner = new Scanner(System.in);
-    String ownerName = scanner.next();
-    int age = scanner.nextInt();
 }
