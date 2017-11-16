@@ -7,7 +7,7 @@ public class DBMethods {
     public static Connection connection()throws SQLException{
         String name = "postgres";
         String password = "passslon42";
-        String url = "jdbc:postgresql://localhost:5432/task13_db";
+        String url = "jdbc:postgresql://localhost:5432/Task13_db";
 
         return DriverManager.getConnection(url, name, password);
     }
@@ -41,8 +41,12 @@ public class DBMethods {
         try{
             Connection connection = DBMethods.connection();
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("SELECT * FROM owner");
-            preparedStatement.execute();
+                    .prepareStatement("SELECT * FROM owner ORDER BY id");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                System.out.print(resultSet.getInt("id"));
+                System.out.println(" " + resultSet.getString("name"));
+            }
 
         }catch (SQLException e3){
             throw new IllegalArgumentException(e3);
@@ -52,8 +56,13 @@ public class DBMethods {
         try{
             Connection connection = DBMethods.connection();
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("SELECT * FROM car");
-            preparedStatement.execute();
+                    .prepareStatement("SELECT * FROM car JOIN owner ON car.owner_id = owner.id ORDER BY car.id");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                System.out.println(resultSet.getInt("id") +" " + resultSet.getString("model")+" "
+                        + resultSet.getString("color")+ " " + resultSet.getInt("number")+" "
+                        + resultSet.getInt("owner_id") + " - " + resultSet.getString("name"));
+            }
 
         }catch (SQLException e4){
             throw new IllegalArgumentException(e4);
@@ -63,9 +72,12 @@ public class DBMethods {
         try {
             Connection connection = DBMethods.connection();
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("SELECT * FROM car WHERE owner_id = (?)");
+                    .prepareStatement("SELECT * FROM car JOIN owner ON owner.id = car.owner_id WHERE owner_id = (?)");
             preparedStatement.setInt(1, ownerId);
-            preparedStatement.execute();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+               System.out.println(resultSet.getString("model")+" " + resultSet.getInt("number")+" "+ resultSet.getString("name"));
+            }
         } catch (SQLException e5) {
             throw new IllegalArgumentException(e5);
         }
@@ -74,9 +86,12 @@ public class DBMethods {
         try{
             Connection connection = DBMethods.connection();
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("SELECT * FROM car WHERE (?)");
+                    .prepareStatement("SELECT * FROM car WHERE color = ?");
             preparedStatement.setString(1, color);
-            preparedStatement.execute();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("model")+" " + resultSet.getInt("number")+resultSet.getString("color"));
+            }
 
 
         } catch (SQLException e6) {

@@ -42,7 +42,7 @@ public class Main {
                 break;
                 case 4: {
                     methods.showCars();
-                }
+                }break;
                 case 5: {
                     System.out.println("Введите id владельца");
                     int ownerId = scanner.nextInt();
