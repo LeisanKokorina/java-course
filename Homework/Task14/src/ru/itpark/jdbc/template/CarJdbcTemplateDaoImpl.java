@@ -26,17 +26,12 @@ public class CarJdbcTemplateDaoImpl implements CarDao {
             "id = ?";
 
     //language=SQL
-    private static final String SQL_SELECT_CARS = "SELECT * FROM car";
-
-    //language=SQL
     private static final String SQL_SELECT_CARS_BY_COLOR = "SELECT * FROM car WHERE color = ?";
 
     //language=SQL
     private static final String SQL_UPDATE_CAR = "UPDATE car SET number = ?, model = ?, color = ?, owner_id = ? " +
             "WHERE id = ?;";
 
-    //language=SQL
-    private static final String SQL_CHECK_IS_EXIST = "SELECT id FROM car WHERE id = ?;";
 
     //language=SQL
     private static final String SQL_DELETE_CAR = "DELETE FROM car WHERE id = ?;";
