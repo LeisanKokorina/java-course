@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class HumanDaoJdbcTemplate implements HumanDao {
+public class HumanJdbcTemplateDaoImpl implements HumanDao {
     //language=SQL
     private static final String SQL_INSERT_USER = "INSERT INTO owner(age, name, citizen)" +
             "VALUES (?, ?, ?)";
@@ -23,6 +23,8 @@ public class HumanDaoJdbcTemplate implements HumanDao {
     //language=SQL
     private static final String SQL_SELECT_USER_BY_ID = "SELECT * FROM owner WHERE " +
             "id = ?";
+    //language=SQL
+    private static final String SQL_SELECT_USERS_BY_AGE = "SELECT * FROM owner WHERE age = ?";
 
     //language=SQL
     private static final String SQL_SELECT_USERS = "SELECT * FROM owner";
@@ -31,9 +33,12 @@ public class HumanDaoJdbcTemplate implements HumanDao {
     private static final String SQL_UPDATE_USER = "UPDATE owner SET name = (?),age = (?), citizen = (?)"+
             "WHERE id = (?)";
 
+    //language=SQL
+    private static final String SQL_DELETE_USER = "DELETE FROM owner WHERE id = (?)";
+
     private JdbcTemplate template;
 
-    public HumansJdbcTemplateDaoImpl(DataSource dataSource) {
+    public HumanJdbcTemplateDaoImpl(DataSource dataSource) {
         this.template = new JdbcTemplate(dataSource);
     }
     private RowMapper<Human> humanRowMapper = new RowMapper<Human>() {
@@ -47,7 +52,7 @@ public class HumanDaoJdbcTemplate implements HumanDao {
     };
     @Override
     public List<Human> findAllByAge(int age) {
-        return null;
+        return template.query(SQL_SELECT_USERS_BY_AGE, humanRowMapper, age);
     }
 
     @Override
@@ -87,17 +92,43 @@ public class HumanDaoJdbcTemplate implements HumanDao {
 
     @Override
     public void update(Human model) {
-        //изменить model, который был сохранен в БД
 
+        template.update(
+                new PreparedStatementCreator() {
+                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+
+                        PreparedStatement ps =
+                                connection.prepareStatement(SQL_UPDATE_USER);
+
+                        ps.setInt(1, model.getAge());
+                        ps.setString(2, model.getName());
+                        ps.setString(3, model.getCitizen());
+                        ps.setInt(3, model.getId());
+                        System.out.println("Пользователь изменен");
+                        return ps;
+                    }
+                });
     }
+
+
 
     @Override
     public void delete(int id) {
+        template.update(
+                new PreparedStatementCreator() {
+                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                        PreparedStatement ps =
+                                connection.prepareStatement(SQL_DELETE_USER);
 
+                        ps.setInt(1, id);
+                        System.out.println("Пользователь изменен");
+                        return ps;
+                    }
+                });
     }
 
     @Override
     public List<Human> findAll() {
-        return null;
+        return template.query(SQL_SELECT_USERS, humanRowMapper);
     }
 }

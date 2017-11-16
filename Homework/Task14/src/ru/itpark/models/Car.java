@@ -61,4 +61,10 @@ public class Car {
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
     }
+
+    @Override
+    public String toString() {
+        return "\n" + this.id + "  " + this.number + "  "
+                + this.color + "  " + this.model + " владелец -  " + this.ownerId;
+    }
 }
