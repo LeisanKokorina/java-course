@@ -14,5 +14,9 @@ public class HashSet<V> {
         map.put(v, object);
     }
 
+    public void iterator(){
+
+    }
+
 
 }

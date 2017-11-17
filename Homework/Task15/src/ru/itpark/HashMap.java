@@ -1,6 +1,6 @@
 package ru.itpark;
 
-public class HashMap<K,V> {
+public class HashMap<K, V> {
     private static class Node<T, E> {
         private T key;
         private E value;
@@ -56,4 +56,29 @@ public class HashMap<K,V> {
         }
         return null;
     }
+    public void iterator() {
+
+
+    }
+
+    private class IteratorOfBucket<K> implements Iterator<K> {
+        private Node currentNode;
+
+        IteratorOfBucket(int index) {
+            currentNode = buckets[index] ;
+        }
+
+        @Override
+        public K next() {
+            K element = (K) currentNode.key;
+            currentNode = currentNode.next;
+            return element;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentNode != null;
+        }
+    }
+
 }
