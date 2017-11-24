@@ -1,0 +1,4 @@
+John	10
+Adam	99
+Jack	98
+Rose  0

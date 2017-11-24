@@ -1,6 +1,6 @@
 package ru.itpark;
 
-public interface IteratorForLinkedList {
+public interface Iterator {
     Object next();
     boolean hasNext();
 }
