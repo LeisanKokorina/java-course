@@ -21,7 +21,7 @@ public class TextViewer {
 
     public void process() {
         for (int i = 0; i< tasksCount;i++){
-            tasks[i].run();
+            new Thread(tasks[i]).start();
         }
     }
 }
