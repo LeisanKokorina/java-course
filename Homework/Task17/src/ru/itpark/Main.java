@@ -30,29 +30,26 @@ public class Main {
             System.out.println();
         }
 
-        while (true) {
-            System.out.println("Введите число, которое надо найти: ");
-            int numberToFind = scanner.nextInt();
-            if (numberToFind < 0) {
-                System.err.println("В матрице содержатся только положительные числа");
-            }
-            ExecutorService service = Executors.newFixedThreadPool(5);
+        System.out.println("Введите число, которое надо найти: ");
+        int numberToFind = scanner.nextInt();
+        if (numberToFind < 0) {
+            System.err.println("В матрице содержатся только положительные числа");
+        }
+        ExecutorService service = Executors.newFixedThreadPool(5);
 
-            Finder finder = new Finder();
+        Finder finder = new Finder();
 
-            service.submit(() -> finder.linearSearch(matrix, numberToFind));
-            service.shutdown();
+        service.submit(() -> finder.linearSearch(matrix, numberToFind));
+        service.shutdown();
 
-            try {
-                Thread.sleep(300);
-            } catch (InterruptedException e) {
-                throw new IllegalArgumentException(e);
-            }
-            if (!isFound) {
-                System.out.println("Такого числа в матрице нет");
-                break;
-            }
-            isFound = false;
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            throw new IllegalArgumentException(e);
+        }
+        if (!isFound) {
+            System.out.println("Такого числа в матрице нет");
+
         }
     }
 }
