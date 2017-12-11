@@ -1,11 +1,12 @@
-package ru.itpark.jdbc.template;
+package ru.itpark.jdbcTemplate;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import ru.itpark.dao.HumanDao;
+import ru.itpark.dao.HumansDao;
 import ru.itpark.models.Car;
 import ru.itpark.models.Human;
 
@@ -16,7 +17,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-public class HumanJdbcTemplateDaoImpl implements HumanDao {
+
+public class HumansJdbcTemplateDaoImpl implements HumansDao {
     //language=SQL
     private static final String SQL_INSERT_USER = "INSERT INTO owner(age, name, citizen)" +
             "VALUES (?, ?, ?)";
@@ -40,7 +42,7 @@ public class HumanJdbcTemplateDaoImpl implements HumanDao {
     private JdbcTemplate template;
     private Map<Integer, Human> humansMap;
 
-    public HumanJdbcTemplateDaoImpl(DataSource dataSource) {
+    public HumansJdbcTemplateDaoImpl(DataSource dataSource) {
         this.template = new JdbcTemplate(dataSource);
         humansMap = new HashMap<>();
     }
@@ -133,7 +135,12 @@ public class HumanJdbcTemplateDaoImpl implements HumanDao {
 
     @Override
     public Human find(int id) {
-        return template.queryForObject(SQL_SELECT_USER_BY_ID, humanRowMapper, id);
+        try {
+            return template.queryForObject(SQL_SELECT_USER_BY_ID, humanRowMapper, id);
+        } catch (EmptyResultDataAccessException e) {
+            // выбрасываем новое исключение с комментарием
+            throw new IllegalArgumentException("User with id <" + id + "> not found");
+        }
     }
 
     @Override

@@ -1,22 +1,21 @@
-package ru.itpark.jdbc.template;
+package ru.itpark.jdbcTemplate;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import ru.itpark.dao.CarDao;
+import ru.itpark.dao.CarsDao;
 import ru.itpark.models.Car;
-import ru.itpark.models.Human;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CarJdbcTemplateDaoImpl implements CarDao {
+public class CarsJdbcTemplateDaoImpl implements CarsDao {
     //language=SQL
     private static final String SQL_INSERT_CAR = "INSERT INTO car(number, model, color, owner_id)" +
             "VALUES (?, ?, ?, ?)";
@@ -38,7 +37,7 @@ public class CarJdbcTemplateDaoImpl implements CarDao {
 
     private JdbcTemplate template;
 
-    public CarJdbcTemplateDaoImpl(DataSource dataSource) {
+    public CarsJdbcTemplateDaoImpl(DataSource dataSource) {
         this.template = new JdbcTemplate(dataSource);
     }
 
@@ -77,7 +76,11 @@ public class CarJdbcTemplateDaoImpl implements CarDao {
 
     @Override
     public Car find(int id) {
+        try{
         return template.queryForObject(SQL_SELECT_CAR_BY_ID, carRowMapper, id);
+        }catch (EmptyResultDataAccessException e){
+            throw new IllegalArgumentException("Car with id <" + id + "> not found");
+        }
     }
 
     @Override

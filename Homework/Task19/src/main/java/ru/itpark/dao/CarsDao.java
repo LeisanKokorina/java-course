@@ -4,6 +4,6 @@ import ru.itpark.models.Car;
 
 import java.util.List;
 
-public interface CarDao extends CrudDao<Car> {
+public interface CarsDao extends CrudDao<Car> {
     List<Car> findAllByColor(String color);
 }
