@@ -1,4 +1,4 @@
-package ru.itpark.jdbcTemplate;
+package ru.itpark.jdbc.template;
 
 import org.junit.Assert;
 import org.junit.Before;

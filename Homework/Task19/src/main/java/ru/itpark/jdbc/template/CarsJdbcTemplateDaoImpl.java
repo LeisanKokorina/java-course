@@ -1,4 +1,4 @@
-package ru.itpark.jdbcTemplate;
+package ru.itpark.jdbc.template;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;

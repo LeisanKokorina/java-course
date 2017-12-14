@@ -3,15 +3,10 @@ package ru.itpark.jdbc;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import ru.itpark.jdbcTemplate.HumansJdbcTemplateDaoImpl;
 import ru.itpark.models.Human;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import static org.junit.Assert.*;
 
 public class HumansJdbcDaoImplTest {
     private HumansJdbcDaoImpl testedHumansJdbcDao;
