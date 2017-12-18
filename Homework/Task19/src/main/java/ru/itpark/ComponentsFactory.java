@@ -23,7 +23,7 @@ public class ComponentsFactory {
     private ComponentsFactory() {
         properties = new Properties();
         try {
-            properties.load(new FileReader("application.properties"));
+            properties.load(new FileReader("E:\\Java\\JAVA_IT_PARK_3\\Homework\\Task19\\src\\main\\resources\\application.properties"));
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
