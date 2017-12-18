@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>2d387710-bcea-4cd7-9790-3d0840bc0ea7</OriginalElement>
+  <nodes>
+    <node x="296.21500000000003" y="168.0">2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.train</node>
+    <node x="0.0" y="0.0">2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.person</node>
+    <node x="387.53249999999997" y="380.5">2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.schedule</node>
+    <node x="45.10749999999999" y="179.0">2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.passport</node>
+    <node x="164.90499999999997" y="336.0">2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.ticket</node>
+    <node x="259.3025" y="22.0">2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.station</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.ticket" target="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.station">
+      <point x="0.0" y="-103.0" />
+      <point x="260.405" y="316.0" />
+      <point x="272.6075" y="316.0" />
+      <point x="272.6075" y="148.0" />
+      <point x="278.2025" y="148.0" />
+      <point x="-75.6" y="37.0" />
+    </edge>
+    <edge source="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.ticket" target="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.person">
+      <point x="-76.39999999999998" y="-103.0" />
+      <point x="184.005" y="316.0" />
+      <point x="34.60749999999999" y="316.0" />
+      <point x="34.60749999999999" y="148.0" />
+      <point x="47.25" y="148.0" />
+      <point x="-47.25" y="59.0" />
+    </edge>
+    <edge source="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.schedule" target="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.train">
+      <point x="-42.25" y="-58.5" />
+      <point x="429.78249999999997" y="316.0" />
+      <point x="438.71500000000003" y="316.0" />
+      <point x="47.5" y="59.0" />
+    </edge>
+    <edge source="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.passport" target="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.person">
+      <point x="0.0" y="-48.0" />
+      <point x="153.6075" y="148.0" />
+      <point x="141.75" y="148.0" />
+      <point x="47.25" y="59.0" />
+    </edge>
+    <edge source="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.ticket" target="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.train">
+      <point x="76.40000000000003" y="-103.0" />
+      <point x="336.805" y="316.0" />
+      <point x="343.71500000000003" y="316.0" />
+      <point x="-47.5" y="59.0" />
+    </edge>
+    <edge source="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.schedule" target="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.station">
+      <point x="42.25" y="-58.5" />
+      <point x="514.2825" y="316.0" />
+      <point x="502.655" y="316.0" />
+      <point x="502.655" y="138.0" />
+      <point x="429.40250000000003" y="138.0" />
+      <point x="75.60000000000002" y="37.0" />
+    </edge>
+    <edge source="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.ticket" target="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.passport">
+      <point x="-38.19999999999999" y="-103.0" />
+      <point x="222.20499999999998" y="306.0" />
+      <point x="153.6075" y="306.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.train" target="2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.station">
+      <point x="47.5" y="-59.0" />
+      <point x="438.71500000000003" y="148.0" />
+      <point x="391.6025" y="148.0" />
+      <point x="37.80000000000001" y="37.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6334519572953736" x="280.5" y="271.0" />
+  <SelectedNodes>
+    <node>2d387710-bcea-4cd7-9790-3d0840bc0ea7.TABLE:RailwayStation_db.public.station</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
