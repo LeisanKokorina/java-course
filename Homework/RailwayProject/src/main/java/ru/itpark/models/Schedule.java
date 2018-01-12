@@ -11,5 +11,5 @@ import lombok.*;
 public class Schedule {
     private Train train;
     private Station station;
-    //timestamp -> java??
+    //timestamp
 }

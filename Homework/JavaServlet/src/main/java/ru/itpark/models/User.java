@@ -4,8 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+
 @Entity
-@Table(name = "passport")
+@Table(name = "user_table")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,12 +14,12 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @Builder
-public class Passport {
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String number;
-    @Column(name = "person_id")
-    private Long personId;
- //   @OneToOne (cascade = CascadeType.ALL, mappedBy = "passport")
+    private String name;
+    private int age;
+    private String citizen;
 }

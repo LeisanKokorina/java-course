@@ -2,17 +2,27 @@ package ru.itpark.models;
 
 import lombok.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "person")
 @Getter
 @Setter
-@Builder
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@Builder
 
 public class Person {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String firstName;
     private String middleName;
     private String lastName;
-   // private Passport passport;
+    @Column(name = "document_id")
+    private Long documentId;
+  //  @OneToOne @OneToOne
+    //    @JoinColumn(name = "fk_document_id", referencedColumnName = "passport_id");
 }
