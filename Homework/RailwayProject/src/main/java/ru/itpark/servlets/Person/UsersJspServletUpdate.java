@@ -1,9 +1,7 @@
-package ru.itpark.servlets;
+package ru.itpark.servlets.Person;
 
 
 import ru.itpark.models.Person;
-
-
 import ru.itpark.repository.UsersRepository;
 
 import javax.servlet.ServletConfig;
@@ -13,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class UsersJspServlet extends HttpServlet {
+public class UsersJspServletUpdate extends HttpServlet {
 
     private UsersRepository usersRepository;
 
@@ -25,11 +23,13 @@ public class UsersJspServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("hello", "Привет!");
+        Long id = Long.parseLong(req.getRequestURI());
+        req.setAttribute("user", usersRepository.find(id));
+        System.out.println(usersRepository.find(id).getFirstName());
+        System.out.println(usersRepository.find(id).getMiddleName());
+        System.out.println(usersRepository.find(id).getLastName());
 
-        req.setAttribute("users", usersRepository.findAll());
-
-        req.getRequestDispatcher("/jsp/person.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/updatePerson.jsp").forward(req, resp);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class UsersJspServlet extends HttpServlet {
                 .lastName(lastName)
                 .documentId(documentId)
                 .build();
-        usersRepository.save(person);
-        resp.sendRedirect("/personSave");
+        usersRepository.update(person);
+        resp.sendRedirect("/personUpdate");
     }
 }

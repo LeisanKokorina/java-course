@@ -25,7 +25,7 @@
 <form action="/stationSave" method="post">
     <input type="text" name="name" placeholder="Name">
 
-    <input type="submit" value="Сохранить">
+    <input type="submit" value="Save">
 </form>
 </body>
 </html>

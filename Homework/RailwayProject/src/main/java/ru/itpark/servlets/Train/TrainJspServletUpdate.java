@@ -1,4 +1,4 @@
-package ru.itpark.servlets;
+package ru.itpark.servlets.Train;
 
 import ru.itpark.models.Train;
 import ru.itpark.repository.TrainRepository;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class TrainJspServlet extends HttpServlet {
+public class TrainJspServletUpdate extends HttpServlet {
             private TrainRepository trainRepository;
 
         @Override
@@ -20,9 +20,10 @@ public class TrainJspServlet extends HttpServlet {
 
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            req.setAttribute("hello", "Привет!");
-            req.setAttribute("trains", trainRepository.findAll());
-            req.getRequestDispatcher("/jsp/train.jsp").forward(req, resp);
+            Long id = Long.parseLong(req.getRequestURI());
+            req.setAttribute("train", trainRepository.find(id));
+            System.out.println(trainRepository.find(id).getNumber());
+            req.getRequestDispatcher("/jsp/updateTrain.jsp").forward(req, resp);
         }
 
         @Override
@@ -38,8 +39,8 @@ public class TrainJspServlet extends HttpServlet {
                     .arrival(arrival)
                     .build();
 
-            trainRepository.save(train);
-            resp.sendRedirect("/trainSave");
+            trainRepository.update(train);
+            resp.sendRedirect("/trainUpdate");
         }
 }
 

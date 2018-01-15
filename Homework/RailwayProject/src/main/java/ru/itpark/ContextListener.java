@@ -1,5 +1,6 @@
 package ru.itpark;
 
+import org.springframework.context.annotation.Configuration;
 import ru.itpark.repository.*;
 import ru.itpark.repository.impl.*;
 
@@ -7,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+
+@Configuration
 
 public class ContextListener implements ServletContextListener {
     @Override
@@ -17,6 +20,7 @@ public class ContextListener implements ServletContextListener {
 
         UsersRepository usersRepository = new UsersRepositoryEntityManagerImpl(factory.createEntityManager());
         servletContextEvent.getServletContext().setAttribute("usersRepository", usersRepository);
+
         PassportRepository passportRepository = new PassportRepositoryEntityManagerImpl(factory.createEntityManager());
         servletContextEvent.getServletContext().setAttribute("passportRepository", passportRepository);
 

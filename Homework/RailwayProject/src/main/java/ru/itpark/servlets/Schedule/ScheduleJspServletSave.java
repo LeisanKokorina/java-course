@@ -1,4 +1,4 @@
-package ru.itpark.servlets;
+package ru.itpark.servlets.Schedule;
 
 import ru.itpark.models.Schedule;
 import ru.itpark.repository.ScheduleRepository;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-public class ScheduleJspServlet extends HttpServlet{
+public class ScheduleJspServletSave extends HttpServlet{
     private ScheduleRepository scheduleRepository;
     @Override
     public void init(ServletConfig config) throws ServletException {

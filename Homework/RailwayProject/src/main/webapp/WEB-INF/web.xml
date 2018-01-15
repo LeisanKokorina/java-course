@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>usersJspServlet</servlet-name>
-        <servlet-class>ru.itpark.servlets.UsersJspServlet</servlet-class>
+        <servlet-class>ru.itpark.servlets.Person.UsersJspServletSave</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>usersJspServlet</servlet-name>
@@ -26,7 +26,7 @@
 
     <servlet>
         <servlet-name>passportJspServlet</servlet-name>
-        <servlet-class>ru.itpark.servlets.PassportJspServlet</servlet-class>
+        <servlet-class>ru.itpark.servlets.Passport.PassportJspServletSave</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>passportJspServlet</servlet-name>
@@ -43,7 +43,7 @@
 
     <servlet>
         <servlet-name>stationJspServlet</servlet-name>
-        <servlet-class>ru.itpark.servlets.StationJspServlet</servlet-class>
+        <servlet-class>ru.itpark.servlets.Station.StationJspServletSave</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>stationJspServlet</servlet-name>
@@ -60,7 +60,7 @@
 
     <servlet>
         <servlet-name>trainJspServlet</servlet-name>
-        <servlet-class>ru.itpark.servlets.TrainJspServlet</servlet-class>
+        <servlet-class>ru.itpark.servlets.Train.TrainJspServletSave</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>trainJspServlet</servlet-name>
@@ -78,7 +78,7 @@
 
     <servlet>
         <servlet-name>ticketJspServlet</servlet-name>
-        <servlet-class>ru.itpark.servlets.TicketJspServlet</servlet-class>
+        <servlet-class>ru.itpark.servlets.Ticket.TicketJspServletSave</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ticketJspServlet</servlet-name>
@@ -95,7 +95,7 @@
 
     <servlet>
         <servlet-name>scheduleJspServlet</servlet-name>
-        <servlet-class>ru.itpark.servlets.ScheduleJspServlet</servlet-class>
+        <servlet-class>ru.itpark.servlets.Schedule.ScheduleJspServletSave</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>scheduleJspServlet</servlet-name>

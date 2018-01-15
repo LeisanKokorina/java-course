@@ -1,4 +1,4 @@
-package ru.itpark.servlets;
+package ru.itpark.servlets.Passport;
 
 import ru.itpark.models.Passport;
 import ru.itpark.models.Person;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class PassportJspServlet extends HttpServlet {
+public class PassportJspServletSave extends HttpServlet {
 
 
     private PassportRepository passportRepository;

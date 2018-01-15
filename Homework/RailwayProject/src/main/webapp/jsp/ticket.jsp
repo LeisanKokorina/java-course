@@ -43,7 +43,7 @@
     <input type="text" name="carriage" placeholder="№ Carriage">
     <input type="text" name="place" placeholder="№ Place">
 
-    <input type="submit"value="Сохранить">
+    <input type="submit"value="Save">
 </form>
 </body>
 </html>

@@ -38,7 +38,7 @@
     <input type="text" name="lastName" placeholder="Last name">
     <input type="text" name="documentId" placeholder="Document">
 
-    <input type="submit"value="Сохранить">
+    <input type="submit"value="Save">
 </form>
 </body>
 </html>

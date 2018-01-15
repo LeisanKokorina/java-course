@@ -24,7 +24,7 @@
 </table>
 <form action="/passportSave" method="post">
     <input type="text" name="number" placeholder="Number">
-     <input type="submit" value="Сохранить">
+     <input type="submit" value="save">
 </form>
 </body>
 </html>

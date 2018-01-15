@@ -1,4 +1,4 @@
-package ru.itpark.servlets;
+package ru.itpark.servlets.Station;
 
 import ru.itpark.models.Station;
 import ru.itpark.repository.StationRepository;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class StationJspServlet extends HttpServlet {
+public class StationJspServletSave extends HttpServlet {
     private StationRepository stationRepository;
 
     @Override

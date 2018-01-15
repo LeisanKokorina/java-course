@@ -33,7 +33,7 @@
     <input type="text" name="station" placeholder="Station">
     <input type="text" name="departureTime" placeholder="Departure time">
     <input type="text" name="arrivalTime" placeholder="Arrival time">
-    <input type="submit" value="Сохранить">
+    <input type="submit" value="Save">
 </form>
 </body>
 </html>
