@@ -1,6 +1,7 @@
-package ru.itpark.repository;
+package ru.itpark.repository.impl;
 
 import ru.itpark.models.Passport;
+import ru.itpark.repository.PassportRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

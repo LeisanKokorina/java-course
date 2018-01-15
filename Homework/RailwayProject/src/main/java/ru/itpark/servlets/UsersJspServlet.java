@@ -16,14 +16,14 @@ import java.io.IOException;
 public class UsersJspServlet extends HttpServlet {
 
     private UsersRepository usersRepository;
-    private PassportRepository passportRepository;
+   // private PassportRepository passportRepository;
 
 
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         this.usersRepository = (UsersRepository)config.getServletContext().getAttribute("usersRepository");
-        this.passportRepository = (PassportRepository)config.getServletContext().getAttribute("passportRepository");
+       // this.passportRepository = (PassportRepository)config.getServletContext().getAttribute("passportRepository");
 
     }
 
@@ -32,26 +32,25 @@ public class UsersJspServlet extends HttpServlet {
         req.setAttribute("hello", "Привет!");
 
         req.setAttribute("users", usersRepository.findAll());
-        req.setAttribute("passport", passportRepository.findAll());
+      //  req.setAttribute("documents", passportRepository.findAll());
         req.getRequestDispatcher("/jsp/person.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String firstName = req.getParameter("first_name");
-        String middleName = req.getParameter("middle_name");
-        String lastName = req.getParameter("last_name");
-
-        Long documentId = Long.parseLong(req.getParameter("document_id"));
+        String firstName = req.getParameter("firstName");
+        String middleName = req.getParameter("middleName");
+        String lastName = req.getParameter("lastName");
+        Long documentId = Long.parseLong(req.getParameter("documentId"));
 
         Person person = Person.builder()
                 .firstName(firstName)
                 .middleName(middleName)
                 .lastName(lastName)
-                .documentId(documentId)
+
                 .build();
         usersRepository.save(person);
-        resp.sendRedirect("/person");
+        resp.sendRedirect("/personSave");
     }
 }

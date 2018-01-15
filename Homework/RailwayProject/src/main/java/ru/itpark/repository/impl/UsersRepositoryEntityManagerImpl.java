@@ -1,7 +1,8 @@
-package ru.itpark.repository;
+package ru.itpark.repository.impl;
 
 
 import ru.itpark.models.Person;
+import ru.itpark.repository.UsersRepository;
 
 
 import javax.persistence.EntityManager;

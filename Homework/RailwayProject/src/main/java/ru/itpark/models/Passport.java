@@ -18,7 +18,11 @@ public class Passport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String number;
-    @Column(name = "person_id")
-    private Long personId;
+
+    @OneToOne(mappedBy="passport")
+    @PrimaryKeyJoinColumn
+    private Person person;
+    @Column(insertable = false, updatable = false)
+    private Long userId;
  //   @OneToOne (cascade = CascadeType.ALL, mappedBy = "passport")
 }

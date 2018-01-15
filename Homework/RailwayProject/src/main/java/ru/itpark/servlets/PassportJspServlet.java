@@ -17,22 +17,17 @@ public class PassportJspServlet extends HttpServlet {
 
 
     private PassportRepository passportRepository;
-    private UsersRepository usersRepository;
-
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         this.passportRepository = (PassportRepository)config.getServletContext().getAttribute("passportRepository");
-        this.usersRepository = (UsersRepository)config.getServletContext().getAttribute("usersRepository");
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("hello", "Привет!");
-
-        req.setAttribute("passport", passportRepository.findAll());
-        req.setAttribute("users", usersRepository.findAll());
+        req.setAttribute("documents", passportRepository.findAll());
         req.getRequestDispatcher("/jsp/passport.jsp").forward(req, resp);
     }
 
@@ -40,14 +35,14 @@ public class PassportJspServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         String number = req.getParameter("number");
-        Long personId =  Long.parseLong(req.getParameter("person_id"));
+        Long personId =  Long.parseLong(req.getParameter("user_id"));
         Passport passport = Passport.builder()
                 .number(number)
-                .personId(personId)
+                .userId(personId)
                 .build();
 
 
         passportRepository.save(passport);
-        resp.sendRedirect("/passport");
+        resp.sendRedirect("/passportSave");
     }
 }

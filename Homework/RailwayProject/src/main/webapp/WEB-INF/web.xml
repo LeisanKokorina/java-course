@@ -10,21 +10,89 @@
         <servlet-name>usersJspServlet</servlet-name>
         <servlet-class>ru.itpark.servlets.UsersJspServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>usersJspServlet</servlet-name>
-        <url-pattern>/person</url-pattern>
+        <url-pattern>/personSave</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>usersJspServlet</servlet-name>
+        <url-pattern>/personUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>usersJspServlet</servlet-name>
+        <url-pattern>/personDelete</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>passportJspServlet</servlet-name>
         <servlet-class>ru.itpark.servlets.PassportJspServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>passportJspServlet</servlet-name>
-        <url-pattern>/passport</url-pattern>
+        <url-pattern>/passportSave</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>passportJspServlet</servlet-name>
+        <url-pattern>/passportUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>passportJspServlet</servlet-name>
+        <url-pattern>/passportDelete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>stationJspServlet</servlet-name>
+        <servlet-class>ru.itpark.servlets.StationJspServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>stationJspServlet</servlet-name>
+        <url-pattern>/stationSave</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>stationJspServlet</servlet-name>
+        <url-pattern>/stationUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>stationJspServlet</servlet-name>
+        <url-pattern>/stationDelete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>trainJspServlet</servlet-name>
+        <servlet-class>ru.itpark.servlets.TrainJspServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>trainJspServlet</servlet-name>
+        <url-pattern>/trainSave</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>trainJspServlet</servlet-name>
+        <url-pattern>/trainUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>trainJspServlet</servlet-name>
+        <url-pattern>/trainDelete</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ticketJspServlet</servlet-name>
+        <servlet-class>ru.itpark.servlets.TicketJspServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ticketJspServlet</servlet-name>
+        <url-pattern>/ticketSave</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>trainJspServlet</servlet-name>
+        <url-pattern>/ticketUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>trainJspServlet</servlet-name>
+        <url-pattern>/ticketDelete</url-pattern>
+    </servlet-mapping>
+
 
     <listener>
         <listener-class>ru.itpark.ContextListener</listener-class>

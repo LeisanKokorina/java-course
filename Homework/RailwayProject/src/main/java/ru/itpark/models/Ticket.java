@@ -2,19 +2,26 @@ package ru.itpark.models;
 
 import lombok.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ticket")
 @Getter
 @Setter
-@Builder
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@Builder
 public class Ticket {
-    private int id;
-    private Person owner;
-    private Passport ownerDocument;
-    private Train train;
-    private Station fromStation;
-    private Station toStation;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long owner;
+    private Long ownerDocument;
+    private Long trainId;
+    private Long departureStationId;
+    private Long arrivalStationId;
     private int carriage;
     private int place;
 

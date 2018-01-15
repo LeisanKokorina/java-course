@@ -14,18 +14,18 @@
         <th>Owner</th>
 
     </tr>
-    <c:forEach items="${passport}" var="passport">
+    <c:forEach items="${documents}" var="passport">
         <tr>
             <td>${passport.id}</td>
             <td>${passport.number}</td>
-            <td>${passport.person_id}</td>
-            <
+            <td>${passport.userId}</td>
+
         </tr>
     </c:forEach>
 </table>
-<form action="/passport" method="post">
+<form action="/passportSave" method="post">
     <input type="text" name="number" placeholder="Number">
-    <input type="text" name="person_id" placeholder="Owner">
+    <input type="text" name="userId" placeholder="Owner">
 
     <input type="submit" value="Сохранить">
 </form>

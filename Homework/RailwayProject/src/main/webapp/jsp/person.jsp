@@ -13,24 +13,28 @@
         <th>First name</th>
         <th>Middle name</th>
         <th>Last name</th>
-        <th>Document</th>
+
 
     </tr>
-    <c:forEach items="${person}" var="person">
+    <c:forEach items="${users}" var="person">
         <tr>
             <td>${person.id}</td>
-            <td>${person.first_name}</td>
-            <td>${person.middle_name}</td>
-            <td>${person.last_name}</td>
-            <td>${person.document_id}</td>
+            <td>${person.firstName}</td>
+            <td>${person.middleName}</td>
+            <td>${person.lastName}</td>
+
+
+            <td><a href="/personUpdate/${person.id}">Редактировать</a></td>
+            <td><a href="/personDelete/${person.id}">Удалить</a></td>
         </tr>
     </c:forEach>
+
 </table>
-<form action="/person" method="post">
-    <input type="text" name="first_name" placeholder="First name">
-    <input type="text" name="middle_name" placeholder="Middle name">
-    <input type="text" name="last_name" placeholder="Last name">
-    <input type="text" name="document_id" placeholder="Document">
+<form action="/personSave" method="post">
+    <input type="text" name="firstName" placeholder="First name">
+    <input type="text" name="middleName" placeholder="Middle name">
+    <input type="text" name="lastName" placeholder="Last name">
+
     <input type="submit"value="Сохранить">
 </form>
 </body>

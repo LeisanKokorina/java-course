@@ -1,9 +1,7 @@
 package ru.itpark;
 
-import ru.itpark.repository.PassportRepository;
-import ru.itpark.repository.PassportRepositoryEntityManagerImpl;
-import ru.itpark.repository.UsersRepository;
-import ru.itpark.repository.UsersRepositoryEntityManagerImpl;
+import ru.itpark.repository.*;
+import ru.itpark.repository.impl.*;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -19,9 +17,17 @@ public class ContextListener implements ServletContextListener {
 
         UsersRepository usersRepository = new UsersRepositoryEntityManagerImpl(factory.createEntityManager());
         servletContextEvent.getServletContext().setAttribute("usersRepository", usersRepository);
-
         PassportRepository passportRepository = new PassportRepositoryEntityManagerImpl(factory.createEntityManager());
         servletContextEvent.getServletContext().setAttribute("passportRepository", passportRepository);
+
+        TrainRepository trainRepository = new TrainRepositoryEntityManagerImpl(factory.createEntityManager());
+        servletContextEvent.getServletContext().setAttribute("trainRepository", trainRepository);
+
+        StationRepository stationRepository = new StationRepositoryEntityManagerImpl(factory.createEntityManager());
+        servletContextEvent.getServletContext().setAttribute("stationRepository", stationRepository);
+
+        TicketRepository ticketRepository = new TicketRepositoryEntityManagerImpl(factory.createEntityManager());
+        servletContextEvent.getServletContext().setAttribute("ticketRepository", ticketRepository);
     }
 
     @Override

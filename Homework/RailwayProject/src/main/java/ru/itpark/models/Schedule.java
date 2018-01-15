@@ -2,6 +2,8 @@ package ru.itpark.models;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Builder
@@ -11,5 +13,6 @@ import lombok.*;
 public class Schedule {
     private Train train;
     private Station station;
-    //timestamp
+    private LocalDateTime departure;
+    private LocalDateTime arrival;
 }
