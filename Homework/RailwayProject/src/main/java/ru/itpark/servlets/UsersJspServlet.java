@@ -1,9 +1,9 @@
 package ru.itpark.servlets;
 
-import ru.itpark.models.Passport;
+
 import ru.itpark.models.Person;
 
-import ru.itpark.repository.PassportRepository;
+
 import ru.itpark.repository.UsersRepository;
 
 import javax.servlet.ServletConfig;
@@ -16,14 +16,10 @@ import java.io.IOException;
 public class UsersJspServlet extends HttpServlet {
 
     private UsersRepository usersRepository;
-   // private PassportRepository passportRepository;
-
-
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        this.usersRepository = (UsersRepository)config.getServletContext().getAttribute("usersRepository");
-       // this.passportRepository = (PassportRepository)config.getServletContext().getAttribute("passportRepository");
+        this.usersRepository = (UsersRepository) config.getServletContext().getAttribute("usersRepository");
 
     }
 
@@ -32,7 +28,7 @@ public class UsersJspServlet extends HttpServlet {
         req.setAttribute("hello", "Привет!");
 
         req.setAttribute("users", usersRepository.findAll());
-      //  req.setAttribute("documents", passportRepository.findAll());
+
         req.getRequestDispatcher("/jsp/person.jsp").forward(req, resp);
     }
 
@@ -48,7 +44,7 @@ public class UsersJspServlet extends HttpServlet {
                 .firstName(firstName)
                 .middleName(middleName)
                 .lastName(lastName)
-
+                .documentId(documentId)
                 .build();
         usersRepository.save(person);
         resp.sendRedirect("/personSave");

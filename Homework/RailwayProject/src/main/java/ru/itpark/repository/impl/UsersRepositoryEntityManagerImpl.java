@@ -32,7 +32,7 @@ public class UsersRepositoryEntityManagerImpl implements UsersRepository {
     }
 
     @Override
-    public Person find(int id) {
+    public Person find(Long id) {
         TypedQuery query = entityManager.createQuery("from Person person where person.id = :id", Person.class);
         query.setParameter("id", id);
         return (Person) query.getSingleResult();
@@ -40,11 +40,16 @@ public class UsersRepositoryEntityManagerImpl implements UsersRepository {
 
     @Override
     public void update(Person model) {
-
+        entityManager.getTransaction().begin();
+        entityManager.merge(model);
+        entityManager.getTransaction().commit();
     }
 
     @Override
-    public void delete(int id) {
-
+    public void delete(Long id) {
+        Person model = find(id);
+        entityManager.getTransaction().begin();
+        entityManager.remove(model);
+        entityManager.getTransaction().commit();
     }
 }

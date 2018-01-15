@@ -28,7 +28,7 @@ public class TicketRepositoryEntityManagerImpl implements TicketRepository{
     }
 
     @Override
-    public Ticket find(int id) {
+    public Ticket find(Long id) {
         TypedQuery query = entityManager.createQuery("from Ticket ticket where ticket.id = :id", Ticket.class);
         query.setParameter("id", id);
         return (Ticket) query.getSingleResult();
@@ -36,11 +36,15 @@ public class TicketRepositoryEntityManagerImpl implements TicketRepository{
 
     @Override
     public void update(Ticket model) {
-
+        entityManager.getTransaction().begin();
+        entityManager.merge(model);
+        entityManager.getTransaction().commit();
     }
 
     @Override
-    public void delete(int id) {
-
-    }
+    public void delete(Long id) {
+        Ticket model = find(id);
+        entityManager.getTransaction().begin();
+        entityManager.remove(model);
+        entityManager.getTransaction().commit();    }
 }

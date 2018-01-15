@@ -28,7 +28,7 @@ public class StationRepositoryEntityManagerImpl implements StationRepository {
     }
 
     @Override
-    public Station find(int id) {
+    public Station find(Long id) {
         TypedQuery query = entityManager.createQuery("from Station station where station.id = :id", Station.class);
         query.setParameter("id", id);
         return (Station) query.getSingleResult();
@@ -36,11 +36,16 @@ public class StationRepositoryEntityManagerImpl implements StationRepository {
 
     @Override
     public void update(Station model) {
-
+        entityManager.getTransaction().begin();
+        entityManager.merge(model);
+        entityManager.getTransaction().commit();
     }
 
     @Override
-    public void delete(int id) {
-
+    public void delete(Long id) {
+        Station model = find(id);
+        entityManager.getTransaction().begin();
+        entityManager.remove(model);
+        entityManager.getTransaction().commit();
     }
 }

@@ -19,10 +19,4 @@ public class Passport {
     private Long id;
     private String number;
 
-    @OneToOne(mappedBy="passport")
-    @PrimaryKeyJoinColumn
-    private Person person;
-    @Column(insertable = false, updatable = false)
-    private Long userId;
- //   @OneToOne (cascade = CascadeType.ALL, mappedBy = "passport")
 }

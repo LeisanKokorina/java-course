@@ -1,42 +1,40 @@
 package ru.itpark.repository.impl;
 
-import ru.itpark.models.Person;
-import ru.itpark.models.Train;
-import ru.itpark.repository.TrainRepository;
+import ru.itpark.models.Schedule;
+import ru.itpark.repository.ScheduleRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class TrainRepositoryEntityManagerImpl implements TrainRepository {
+public class ScheduleRepositoryEntityManagerImpl implements ScheduleRepository {
     private EntityManager entityManager;
-
-    public TrainRepositoryEntityManagerImpl(EntityManager entityManager) {
+    public ScheduleRepositoryEntityManagerImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     @Override
-    public List<Train> findAll() {
+    public List<Schedule> findAll() {
         return entityManager
-                .createQuery( "from Train train order by train.id", Train.class)
+                .createQuery( "from Schedule schedule order by schedule.id", Schedule.class)
                 .getResultList();
     }
 
     @Override
-    public void save(Train model) {
+    public void save(Schedule model) {
         entityManager.getTransaction().begin();
         entityManager.persist(model);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public Train find(Long id) {
-        TypedQuery query = entityManager.createQuery("from Train train where train.id = :id", Train.class);
+    public Schedule find(Long id) {
+        TypedQuery query = entityManager.createQuery("from Schedule schedule where schedule.id = :id", Schedule.class);
         query.setParameter("id", id);
-        return (Train) query.getSingleResult();
+        return (Schedule) query.getSingleResult();
     }
 
     @Override
-    public void update(Train model) {
+    public void update(Schedule model) {
         entityManager.getTransaction().begin();
         entityManager.merge(model);
         entityManager.getTransaction().commit();
@@ -44,7 +42,7 @@ public class TrainRepositoryEntityManagerImpl implements TrainRepository {
 
     @Override
     public void delete(Long id) {
-        Train model = find(id);
+        Schedule model = find(id);
         entityManager.getTransaction().begin();
         entityManager.remove(model);
         entityManager.getTransaction().commit();

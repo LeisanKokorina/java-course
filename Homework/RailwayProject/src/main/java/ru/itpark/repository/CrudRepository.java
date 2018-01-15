@@ -6,7 +6,7 @@ public interface CrudRepository<T> {
     List<T> findAll();
 
     void save(T model);
-    T find(int id);
+    T find(Long id);
     void update(T model);
-    void delete(int id);
+    void delete(Long id);
 }

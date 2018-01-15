@@ -35,10 +35,9 @@ public class PassportJspServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         String number = req.getParameter("number");
-        Long personId =  Long.parseLong(req.getParameter("user_id"));
+
         Passport passport = Passport.builder()
                 .number(number)
-                .userId(personId)
                 .build();
 
 

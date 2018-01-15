@@ -28,6 +28,9 @@ public class ContextListener implements ServletContextListener {
 
         TicketRepository ticketRepository = new TicketRepositoryEntityManagerImpl(factory.createEntityManager());
         servletContextEvent.getServletContext().setAttribute("ticketRepository", ticketRepository);
+
+        ScheduleRepository scheduleRepository = new ScheduleRepositoryEntityManagerImpl(factory.createEntityManager());
+        servletContextEvent.getServletContext().setAttribute("scheduleRepository", scheduleRepository);
     }
 
     @Override

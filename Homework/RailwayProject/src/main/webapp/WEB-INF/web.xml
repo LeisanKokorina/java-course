@@ -93,6 +93,23 @@
         <url-pattern>/ticketDelete</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>scheduleJspServlet</servlet-name>
+        <servlet-class>ru.itpark.servlets.ScheduleJspServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>scheduleJspServlet</servlet-name>
+        <url-pattern>/scheduleSave</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>scheduleJspServlet</servlet-name>
+        <url-pattern>/scheduleUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>scheduleJspServlet</servlet-name>
+        <url-pattern>/scheduleDelete</url-pattern>
+    </servlet-mapping>
+
 
     <listener>
         <listener-class>ru.itpark.ContextListener</listener-class>

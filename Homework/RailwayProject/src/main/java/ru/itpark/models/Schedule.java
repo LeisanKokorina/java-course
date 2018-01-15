@@ -2,17 +2,24 @@ package ru.itpark.models;
 
 import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "Schedule")
 @Getter
 @Setter
-@Builder
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@Builder
 public class Schedule {
-    private Train train;
-    private Station station;
-    private LocalDateTime departure;
-    private LocalDateTime arrival;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long trainId;
+    private Long station;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
 }

@@ -27,7 +27,7 @@ public class PassportRepositoryEntityManagerImpl implements PassportRepository {
     }
 
     @Override
-    public Passport find(int id) {
+    public Passport find(Long id) {
         TypedQuery query = entityManager.createQuery("from Passport passport where passport.id = :id", Passport.class);
         query.setParameter("id", id);
         return (Passport) query.getSingleResult();
@@ -35,11 +35,16 @@ public class PassportRepositoryEntityManagerImpl implements PassportRepository {
 
     @Override
     public void update(Passport model) {
-
+        entityManager.getTransaction().begin();
+        entityManager.merge(model);
+        entityManager.getTransaction().commit();
     }
 
     @Override
-    public void delete(int id) {
-
+    public void delete(Long id) {
+        Passport model = find(id);
+        entityManager.getTransaction().begin();
+        entityManager.remove(model);
+        entityManager.getTransaction().commit();
     }
 }
