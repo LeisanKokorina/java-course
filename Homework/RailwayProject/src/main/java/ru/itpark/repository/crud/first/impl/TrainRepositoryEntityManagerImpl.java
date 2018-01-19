@@ -1,40 +1,41 @@
-package ru.itpark.repository.impl;
+package ru.itpark.repository.crud.first.impl;
 
-import ru.itpark.models.Passport;
-import ru.itpark.repository.PassportRepository;
+import ru.itpark.models.Train;
+import ru.itpark.repository.crud.first.TrainRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class PassportRepositoryEntityManagerImpl implements PassportRepository {
+public class TrainRepositoryEntityManagerImpl implements TrainRepository {
     private EntityManager entityManager;
-    public PassportRepositoryEntityManagerImpl(EntityManager entityManager) {
+
+    public TrainRepositoryEntityManagerImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     @Override
-    public List<Passport> findAll() {
+    public List<Train> findAll() {
         return entityManager
-                .createQuery( "from Passport passport order by passport.id", Passport.class)
+                .createQuery( "from Train train order by train.id", Train.class)
                 .getResultList();
     }
 
     @Override
-    public void save(Passport model) {
+    public void save(Train model) {
         entityManager.getTransaction().begin();
         entityManager.persist(model);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public Passport find(Long id) {
-        TypedQuery query = entityManager.createQuery("from Passport passport where passport.id = :id", Passport.class);
+    public Train find(Long id) {
+        TypedQuery query = entityManager.createQuery("from Train train where train.id = :id", Train.class);
         query.setParameter("id", id);
-        return (Passport) query.getSingleResult();
+        return (Train) query.getSingleResult();
     }
 
     @Override
-    public void update(Passport model) {
+    public void update(Train model) {
         entityManager.getTransaction().begin();
         entityManager.merge(model);
         entityManager.getTransaction().commit();
@@ -42,7 +43,7 @@ public class PassportRepositoryEntityManagerImpl implements PassportRepository {
 
     @Override
     public void delete(Long id) {
-        Passport model = find(id);
+        Train model = find(id);
         entityManager.getTransaction().begin();
         entityManager.remove(model);
         entityManager.getTransaction().commit();

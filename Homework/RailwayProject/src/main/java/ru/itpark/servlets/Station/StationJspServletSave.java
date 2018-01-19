@@ -1,7 +1,7 @@
 package ru.itpark.servlets.Station;
 
 import ru.itpark.models.Station;
-import ru.itpark.repository.StationRepository;
+import ru.itpark.repository.crud.first.StationRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -29,7 +29,7 @@ public class StationJspServletSave extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String name = req.getParameter("stationName");
+        String name = req.getParameter("name");
 
         Station station = Station.builder()
                 .name(name)

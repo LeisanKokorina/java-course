@@ -6,7 +6,9 @@
     <title>Ticket updating</title>
 
 </head>
+
 <body>
+
 <div>
     <h1>Ticket updating</h1>
     <form action="/ticketUpdate" method="post">

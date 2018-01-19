@@ -1,8 +1,8 @@
 package ru.itpark;
 
 import org.springframework.context.annotation.Configuration;
-import ru.itpark.repository.*;
-import ru.itpark.repository.impl.*;
+import ru.itpark.repository.crud.first.*;
+import ru.itpark.repository.crud.first.impl.*;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

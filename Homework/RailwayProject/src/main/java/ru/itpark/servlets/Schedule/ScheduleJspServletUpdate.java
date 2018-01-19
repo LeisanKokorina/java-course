@@ -1,7 +1,7 @@
 package ru.itpark.servlets.Schedule;
 
 import ru.itpark.models.Schedule;
-import ru.itpark.repository.ScheduleRepository;
+import ru.itpark.repository.crud.first.ScheduleRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -48,6 +48,6 @@ public class ScheduleJspServletUpdate extends HttpServlet{
 
 
         scheduleRepository.update(schedule);
-        resp.sendRedirect("/scheduleUpdate");
+        resp.sendRedirect("/scheduleSave");
     }
 }

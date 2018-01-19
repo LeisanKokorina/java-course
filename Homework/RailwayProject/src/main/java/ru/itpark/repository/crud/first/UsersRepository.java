@@ -1,4 +1,4 @@
-package ru.itpark.repository;
+package ru.itpark.repository.crud.first;
 
 import ru.itpark.models.Person;
 

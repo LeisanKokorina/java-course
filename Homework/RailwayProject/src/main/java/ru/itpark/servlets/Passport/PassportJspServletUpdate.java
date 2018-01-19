@@ -1,7 +1,7 @@
 package ru.itpark.servlets.Passport;
 
 import ru.itpark.models.Passport;
-import ru.itpark.repository.PassportRepository;
+import ru.itpark.repository.crud.first.PassportRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class PassportJspServletUpdate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.parseLong(req.getRequestURI());
-        req.setAttribute("passport", passportRepository.find(id));
+        req.setAttribute("document", passportRepository.find(id));
         System.out.println(passportRepository.find(id).getNumber());
         req.getRequestDispatcher("/jsp/updatePassport.jsp").forward(req, resp);
     }
@@ -40,6 +40,6 @@ public class PassportJspServletUpdate extends HttpServlet {
 
 
         passportRepository.update(passport);
-        resp.sendRedirect("/passportUpdate");
+        resp.sendRedirect("/passportSave");
     }
 }

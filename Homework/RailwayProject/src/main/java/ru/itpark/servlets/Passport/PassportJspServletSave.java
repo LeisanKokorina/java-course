@@ -1,10 +1,8 @@
 package ru.itpark.servlets.Passport;
 
 import ru.itpark.models.Passport;
-import ru.itpark.models.Person;
 
-import ru.itpark.repository.PassportRepository;
-import ru.itpark.repository.UsersRepository;
+import ru.itpark.repository.crud.first.PassportRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

@@ -1,7 +1,7 @@
 package ru.itpark.servlets.Station;
 
 import ru.itpark.models.Station;
-import ru.itpark.repository.StationRepository;
+import ru.itpark.repository.crud.first.StationRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -23,7 +23,7 @@ public class StationJspServletUpdate extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.parseLong(req.getRequestURI());
         req.setAttribute("station", stationRepository.find(id));
-        System.out.println(stationRepository.find(id).getName());
+       // System.out.println(stationRepository.find(id).getName());
         req.getRequestDispatcher("/jsp/updateStation.jsp").forward(req, resp);
     }
 
@@ -38,6 +38,6 @@ public class StationJspServletUpdate extends HttpServlet {
 
 
         stationRepository.update(station);
-        resp.sendRedirect("/stationUpdate");
+        resp.sendRedirect("/stationSave");
     }
 }

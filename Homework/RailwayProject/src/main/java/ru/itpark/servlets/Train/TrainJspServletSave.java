@@ -1,7 +1,7 @@
 package ru.itpark.servlets.Train;
 
 import ru.itpark.models.Train;
-import ru.itpark.repository.TrainRepository;
+import ru.itpark.repository.crud.first.TrainRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

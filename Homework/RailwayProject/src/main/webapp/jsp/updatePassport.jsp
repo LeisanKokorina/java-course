@@ -12,14 +12,14 @@
     <form action="/passportUpdate" method="post">
         <table>
             <tr>
-                <td>${passport.id}</td>
-                <td>${passport.number}</td>
+                <td>${document.id}</td>
+                <td>${document.number}</td>
 
                 <th>confirm</th>
             </tr>
             <tr>
-                <td><input type="text" name="id" value="${passport.id}" readonly></td>
-                <td><input type="text" name="number" value="${passport.number}"></td>
+                <td><input type="text" name="id" value="${document.id}" readonly></td>
+                <td><input type="text" name="number" value="${document.number}"></td>
 
 
                 <td><input type="submit" value="Save"></td>

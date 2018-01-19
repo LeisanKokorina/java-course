@@ -1,41 +1,45 @@
-package ru.itpark.repository.impl;
+package ru.itpark.repository.crud.first.impl;
 
-import ru.itpark.models.Station;
-import ru.itpark.models.Train;
-import ru.itpark.repository.StationRepository;
+
+import ru.itpark.models.Person;
+import ru.itpark.repository.crud.first.UsersRepository;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class StationRepositoryEntityManagerImpl implements StationRepository {
+public class UsersRepositoryEntityManagerImpl implements UsersRepository {
+
     private EntityManager entityManager;
-    public StationRepositoryEntityManagerImpl(EntityManager entityManager) {
+
+    public UsersRepositoryEntityManagerImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
     @Override
-    public List<Station> findAll() {
+    public List<Person> findAll() {
         return entityManager
-                .createQuery( "from Station station order by station.id", Station.class)
+                .createQuery( "from Person person order by person.id", Person.class)
                 .getResultList();
     }
 
     @Override
-    public void save(Station model) {
+    public void save(Person model) {
         entityManager.getTransaction().begin();
         entityManager.persist(model);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public Station find(Long id) {
-        TypedQuery query = entityManager.createQuery("from Station station where station.id = :id", Station.class);
+    public Person find(Long id) {
+        TypedQuery query = entityManager.createQuery("from Person person where person.id = :id", Person.class);
         query.setParameter("id", id);
-        return (Station) query.getSingleResult();
+        return (Person) query.getSingleResult();
     }
 
     @Override
-    public void update(Station model) {
+    public void update(Person model) {
         entityManager.getTransaction().begin();
         entityManager.merge(model);
         entityManager.getTransaction().commit();
@@ -43,7 +47,7 @@ public class StationRepositoryEntityManagerImpl implements StationRepository {
 
     @Override
     public void delete(Long id) {
-        Station model = find(id);
+        Person model = find(id);
         entityManager.getTransaction().begin();
         entityManager.remove(model);
         entityManager.getTransaction().commit();

@@ -1,4 +1,4 @@
-package ru.itpark.repository;
+package ru.itpark.repository.crud.jdbc;
 
 import ru.itpark.models.Passport;
 

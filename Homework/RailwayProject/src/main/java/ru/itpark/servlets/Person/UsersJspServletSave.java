@@ -4,7 +4,7 @@ package ru.itpark.servlets.Person;
 import ru.itpark.models.Person;
 
 
-import ru.itpark.repository.UsersRepository;
+import ru.itpark.repository.crud.first.UsersRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -27,7 +27,7 @@ public class UsersJspServletSave extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("hello", "Привет!");
 
-        req.setAttribute("person", usersRepository.findAll());
+        req.setAttribute("persons", usersRepository.findAll());
 
         req.getRequestDispatcher("/jsp/person.jsp").forward(req, resp);
     }

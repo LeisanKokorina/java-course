@@ -1,9 +1,7 @@
 package ru.itpark.servlets.Ticket;
 
 import ru.itpark.models.Ticket;
-import ru.itpark.models.Train;
-import ru.itpark.repository.TicketRepository;
-import ru.itpark.repository.TrainRepository;
+import ru.itpark.repository.crud.first.TicketRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

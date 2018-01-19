@@ -1,40 +1,40 @@
-package ru.itpark.repository.impl;
+package ru.itpark.repository.crud.first.impl;
 
-import ru.itpark.models.Schedule;
-import ru.itpark.repository.ScheduleRepository;
+import ru.itpark.models.Passport;
+import ru.itpark.repository.crud.first.PassportRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class ScheduleRepositoryEntityManagerImpl implements ScheduleRepository {
+public class PassportRepositoryEntityManagerImpl implements PassportRepository {
     private EntityManager entityManager;
-    public ScheduleRepositoryEntityManagerImpl(EntityManager entityManager) {
+    public PassportRepositoryEntityManagerImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
     @Override
-    public List<Schedule> findAll() {
+    public List<Passport> findAll() {
         return entityManager
-                .createQuery( "from Schedule schedule order by schedule.id", Schedule.class)
+                .createQuery( "from Passport passport order by passport.id", Passport.class)
                 .getResultList();
     }
 
     @Override
-    public void save(Schedule model) {
+    public void save(Passport model) {
         entityManager.getTransaction().begin();
         entityManager.persist(model);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public Schedule find(Long id) {
-        TypedQuery query = entityManager.createQuery("from Schedule schedule where schedule.id = :id", Schedule.class);
+    public Passport find(Long id) {
+        TypedQuery query = entityManager.createQuery("from Passport passport where passport.id = :id", Passport.class);
         query.setParameter("id", id);
-        return (Schedule) query.getSingleResult();
+        return (Passport) query.getSingleResult();
     }
 
     @Override
-    public void update(Schedule model) {
+    public void update(Passport model) {
         entityManager.getTransaction().begin();
         entityManager.merge(model);
         entityManager.getTransaction().commit();
@@ -42,7 +42,7 @@ public class ScheduleRepositoryEntityManagerImpl implements ScheduleRepository {
 
     @Override
     public void delete(Long id) {
-        Schedule model = find(id);
+        Passport model = find(id);
         entityManager.getTransaction().begin();
         entityManager.remove(model);
         entityManager.getTransaction().commit();

@@ -1,7 +1,7 @@
 package ru.itpark.servlets.Ticket;
 
 import ru.itpark.models.Ticket;
-import ru.itpark.repository.TicketRepository;
+import ru.itpark.repository.crud.first.TicketRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -22,9 +22,7 @@ public class TicketJspServletUpdate extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.parseLong(req.getRequestURI());
         req.setAttribute("ticket", ticketRepository.find(id));
-        System.out.println(ticketRepository.find(id).getTrainId());
-        System.out.println(ticketRepository.find(id).getDepartureStationId());
-        System.out.println(ticketRepository.find(id).getOwner());
+
 
         req.getRequestDispatcher("/jsp/updateTicket.jsp").forward(req, resp);
     }
@@ -52,7 +50,7 @@ public class TicketJspServletUpdate extends HttpServlet {
 
 
         ticketRepository.update(ticket);
-        resp.sendRedirect("/ticketUpdate");
+        resp.sendRedirect("/ticketSave");
     }
 }
 

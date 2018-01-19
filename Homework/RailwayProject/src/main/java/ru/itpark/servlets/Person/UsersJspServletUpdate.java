@@ -2,7 +2,7 @@ package ru.itpark.servlets.Person;
 
 
 import ru.itpark.models.Person;
-import ru.itpark.repository.UsersRepository;
+import ru.itpark.repository.crud.first.UsersRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class UsersJspServletUpdate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.parseLong(req.getRequestURI());
-        req.setAttribute("user", usersRepository.find(id));
+        req.setAttribute("person", usersRepository.find(id));
         System.out.println(usersRepository.find(id).getFirstName());
         System.out.println(usersRepository.find(id).getMiddleName());
         System.out.println(usersRepository.find(id).getLastName());
@@ -47,6 +47,6 @@ public class UsersJspServletUpdate extends HttpServlet {
                 .documentId(documentId)
                 .build();
         usersRepository.update(person);
-        resp.sendRedirect("/personUpdate");
+        resp.sendRedirect("/personSave");
     }
 }

@@ -17,17 +17,13 @@
 
 
     </tr>
-    <c:forEach items="${users}" var="person">
+    <c:forEach items="${persons}" var="person">
         <tr>
             <td>${person.id}</td>
             <td>${person.firstName}</td>
             <td>${person.middleName}</td>
             <td>${person.lastName}</td>
             <td>${person.documentId}</td>
-
-
-            <td><a href="/personUpdate/${person.id}">Редактировать</a></td>
-            <td><a href="/personDelete/${person.id}">Удалить</a></td>
         </tr>
     </c:forEach>
 

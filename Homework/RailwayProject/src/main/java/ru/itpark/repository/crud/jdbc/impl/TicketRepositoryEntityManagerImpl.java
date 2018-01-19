@@ -1,13 +1,13 @@
-package ru.itpark.repository.impl;
+package ru.itpark.repository.crud.jdbc.impl;
 
 import ru.itpark.models.Ticket;
-import ru.itpark.repository.TicketRepository;
+import ru.itpark.repository.crud.jdbc.TicketRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class TicketRepositoryEntityManagerImpl implements TicketRepository{
+public class TicketRepositoryEntityManagerImpl implements TicketRepository {
     private EntityManager entityManager;
 
     public TicketRepositoryEntityManagerImpl(EntityManager entityManager) {
@@ -34,17 +34,5 @@ public class TicketRepositoryEntityManagerImpl implements TicketRepository{
         return (Ticket) query.getSingleResult();
     }
 
-    @Override
-    public void update(Ticket model) {
-        entityManager.getTransaction().begin();
-        entityManager.merge(model);
-        entityManager.getTransaction().commit();
-    }
 
-    @Override
-    public void delete(Long id) {
-        Ticket model = find(id);
-        entityManager.getTransaction().begin();
-        entityManager.remove(model);
-        entityManager.getTransaction().commit();    }
 }
