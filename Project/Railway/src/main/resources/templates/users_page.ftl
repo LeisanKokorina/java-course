@@ -3,7 +3,7 @@
 <@spring.bind "model"/>
 <html>
 <head>
-    <title>News- Регистрация</title>
+    <title>Пользователи</title>
 </head>
 <body>
 <table>

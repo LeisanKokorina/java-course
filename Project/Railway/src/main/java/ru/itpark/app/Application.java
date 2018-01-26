@@ -14,13 +14,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 // аннотация, которая говорит Spring-у
 // где искать компоненты для связывания (вспомнить @Autowired, @Component)
-@ComponentScan(basePackages = "ru.itpark.news")
+@ComponentScan(basePackages = "ru.itpark")
 // говорим, где лежат классы, которые будут
 // объектом взаимодействия с бд
-@EntityScan(basePackages = "ru.itpark.news.models")
+@EntityScan(basePackages = "ru.itpark.models")
 // говорим, что наши репозитории описаны в данном пакете
 // Spring JPA сам сгенерирует для них реализацию
-@EnableJpaRepositories(basePackages = "ru.itpark.news.repositories")
+@EnableJpaRepositories(basePackages = "ru.itpark.repositories")
 // выключили безопасность чтобы было норм
 @EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 public class Application {

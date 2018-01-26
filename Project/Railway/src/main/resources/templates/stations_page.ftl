@@ -3,20 +3,20 @@
 <@spring.bind "model"/>
 <html>
 <head>
-    <title>News- Регистрация</title>
+    <title>Станции</title>
 </head>
 <body>
 <table>
     <tr>
         <th>ID</th>
         <th>Имя</th>
-        <th>Дата регистрации</th>
+
     </tr>
-    <#list model.users as user>
+    <#list model.stations as station>
     <tr>
-        <td>${user.id}</td>
-        <td>${user.name}</td>
-        <td>${user.registrationTime}</td>
+        <td>${station.id}</td>
+        <td>${station.name}</td>
+
     </tr>
     </#list>
 </table>
