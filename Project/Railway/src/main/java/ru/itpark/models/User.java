@@ -24,4 +24,10 @@ public class User {
   private String email;
   private String hashPassword;
   private LocalDateTime registrationTime;
+
+  private String confirmCode;
+  private LocalDateTime expiredDate;
+
+  @Enumerated(value = EnumType.STRING)
+  private State state;
 }
