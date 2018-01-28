@@ -2,6 +2,7 @@ package ru.itpark.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.itpark.forms.StationForm;
 import ru.itpark.models.Station;
 import ru.itpark.repositories.StationRepository;
 
@@ -20,5 +21,13 @@ public class StationServiceImpl implements StationService {
             case "name": return stationRepository.findByOrderByName();
         }
         return stationRepository.findAll();
+    }
+    @Override
+    public Long addStation(StationForm form) {
+        Station newStation = Station.builder()
+                .name(form.getName())
+                .build();
+        stationRepository.save(newStation);
+        return newStation.getId();
     }
 }

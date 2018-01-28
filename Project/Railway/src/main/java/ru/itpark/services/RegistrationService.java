@@ -14,7 +14,7 @@ public interface RegistrationService {
    * @return id-сгенерированного пользователя
    */
   Long registration(RegistrationForm form);
-  Long addStation(StationForm form);
-  Long addPassenger(PassengerForm form);
-  Long addPassport(PassportForm form);
+
+
+
 }

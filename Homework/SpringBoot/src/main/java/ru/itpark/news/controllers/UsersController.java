@@ -1,11 +1,11 @@
 package ru.itpark.news.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import ru.itpark.news.forms.NamesForm;
 import ru.itpark.news.models.User;
 import ru.itpark.news.services.UsersService;
 
@@ -22,6 +22,21 @@ public class UsersController {
                          @RequestParam("order_by") String orderBy) {
     List<User> users = service.getUsers(orderBy);
     model.addAttribute("users", users);
+    return "users_page";
+  }
+  @GetMapping("/users/{user-id}")
+  public String getUserPage(@ModelAttribute("model") ModelMap model,
+                            @PathVariable("user-id") Long userId) {
+    User user = service.getUser(userId);
+    model.addAttribute("user", user);
     return "user_page";
+  }
+
+  @PostMapping("/users/{user-id}")
+  @ResponseBody
+  public ResponseEntity<Object> updateUser(@PathVariable("user-id") Long userId,
+                                           NamesForm form) {
+    service.update(userId, form);
+    return ResponseEntity.accepted().build();
   }
 }
