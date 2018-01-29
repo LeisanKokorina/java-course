@@ -13,8 +13,9 @@ public interface RegistrationService {
    * @param form
    * @return id-сгенерированного пользователя
    */
-  Long registration(RegistrationForm form);
-  Long addStation(StationForm form);
-  Long addPassenger(PassengerForm form);
-  Long addPassport(PassportForm form);
+  String registration(RegistrationForm form);
+  boolean confirm(String confirmString);
+
+
+
 }

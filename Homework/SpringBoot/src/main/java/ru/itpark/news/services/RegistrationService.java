@@ -10,5 +10,6 @@ public interface RegistrationService {
    * @param form
    * @return id-сгенерированного пользователя
    */
-  Long registration(RegistrationForm form);
+  String registration(RegistrationForm form);
+  boolean confirm(String confirmString);
 }

@@ -1,23 +1,24 @@
 package ru.itpark.services;
 
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.itpark.forms.PassengerForm;
-import ru.itpark.forms.PassportForm;
+
 import ru.itpark.forms.RegistrationForm;
-import ru.itpark.forms.StationForm;
-import ru.itpark.models.Passenger;
-import ru.itpark.models.Passport;
-import ru.itpark.models.Station;
+
+import ru.itpark.models.State;
 import ru.itpark.models.User;
-import ru.itpark.repositories.PassengerRepository;
-import ru.itpark.repositories.PassportRepository;
-import ru.itpark.repositories.StationRepository;
+
 import ru.itpark.repositories.UsersRepository;
 
+import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
@@ -25,58 +26,61 @@ public class RegistrationServiceImpl implements RegistrationService {
   @Autowired
   private UsersRepository usersRepository;
   @Autowired
-  private StationRepository stationRepository;
-  @Autowired
-  private PassengerRepository passengerRepository;
-  @Autowired
-  private PassportRepository passportRepository;
-
+  private JavaMailSender javaMailSender;
   private PasswordEncoder encoder = new BCryptPasswordEncoder();
 
   @Override
-  public Long registration(RegistrationForm form) {
+  @SneakyThrows
+  public String registration(RegistrationForm form) {
     String hashPassword = encoder.encode(form.getPassword());
     LocalDateTime registrationTime = LocalDateTime.now();
+    String confirmString = UUID.randomUUID().toString().replace("-","");
 
     User newUser = User.builder()
-        .name(form.getName())
-        .email(form.getEmail())
-        .surname(form.getSurname())
-        .hashPassword(hashPassword)
-        .registrationTime(registrationTime)
-        .build();
+            .name(form.getName())
+            .confirmCode(confirmString)
+            .expiredDate(LocalDateTime.now().plusHours(3))
+            .email(form.getEmail())
+            .surname(form.getSurname())
+            .hashPassword(hashPassword)
+            .registrationTime(registrationTime)
+            .build();
 
     usersRepository.save(newUser);
-    return newUser.getId();
+
+    String text = "<a href=\"localhost/confirm/" +newUser.getConfirmCode()+ "\">Пройдите по ссылке</a>";
+
+    MimeMessage message = javaMailSender.createMimeMessage();
+    message.setContent(text, "text/html");
+    MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
+    messageHelper.setTo(newUser.getEmail());
+    messageHelper.setSubject("Подтверждение регистрации");
+    messageHelper.setText(text, true);
+
+    javaMailSender.send(message);
+
+    return newUser.getEmail();
   }
 
   @Override
-  public Long addStation(StationForm form) {
-      Station newStation = Station.builder()
-              .name(form.getName())
-              .build();
-      stationRepository.save(newStation);
-      return newStation.getId();
+  public boolean confirm(String confirmString) {
+    Optional<User> userOptional
+            = usersRepository.findByConfirmCode(confirmString);
+    if (userOptional.isPresent()) {
+      User user = userOptional.get();
+
+      if (LocalDateTime.now().isAfter(user.getExpiredDate())) {
+        return false;
+      }
+
+      user.setConfirmCode(null);
+      user.setExpiredDate(null);
+      user.setState(State.CONFIRMED);
+      usersRepository.save(user);
+
+      return true;
+    }
+    return false;
   }
 
-  @Override
-  public Long addPassenger(PassengerForm form) {
-    Passenger newPassenger = Passenger.builder()
-            .firstName(form.getFirstName())
-            .middleName(form.getMiddleName())
-            .lastName(form.getLastName())
-            .documentId(form.getDocumentId())
-            .build();
-    passengerRepository.save(newPassenger);
-    return newPassenger.getId();
-  }
-
-  @Override
-  public Long addPassport(PassportForm form) {
-    Passport newPassport = Passport.builder()
-            .number(form.getNumber())
-            .build();
-    passportRepository.save(newPassport);
-    return newPassport.getId();
-  }
 }
