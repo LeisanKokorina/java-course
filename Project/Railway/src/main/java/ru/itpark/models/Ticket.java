@@ -4,8 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+
 @Entity
-@Table(name = "passport")
+@Table(name = "ticket")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,9 +14,17 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @Builder
-public class Passport {
+public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String number;
+    @Enumerated(value = EnumType.STRING)
+    private TicketStatus ticketStatus;
+
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String document;
+
+
 }

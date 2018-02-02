@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PassengerRepository  extends JpaRepository<Passenger, Long> {
     List<Passenger> findByOrderById();
-    List<Passenger> findByOrderByDocumentId();
+    List<Passenger> findByOrderByDocument();
 }

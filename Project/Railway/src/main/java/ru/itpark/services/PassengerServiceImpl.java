@@ -16,7 +16,7 @@ public class PassengerServiceImpl implements PassengerService {
     public List<Passenger> getPassengers(String orderBy) {
         switch (orderBy) {
             case "id": return passengerRepository.findByOrderById();
-            case "documentId": return passengerRepository.findByOrderByDocumentId();
+            case "document": return passengerRepository.findByOrderByDocument();
         }
         return passengerRepository.findAll();
     }
@@ -26,7 +26,7 @@ public class PassengerServiceImpl implements PassengerService {
                 .firstName(form.getFirstName())
                 .middleName(form.getMiddleName())
                 .lastName(form.getLastName())
-                .documentId(form.getDocumentId())
+                .document(form.getDocument())
                 .build();
         passengerRepository.save(newPassenger);
         return newPassenger.getId();

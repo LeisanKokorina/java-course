@@ -21,7 +21,7 @@
         <td>${passenger.firstName}</td>
         <td>${passenger.middleName}</td>
         <td>${passenger.lastName}</td>
-        <td>${passenger.documentId}</td>
+        <td>${passenger.document}</td>
 
     </tr>
     </#list>
