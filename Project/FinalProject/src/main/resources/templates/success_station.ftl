@@ -3,9 +3,9 @@
 <@spring.bind "model"/>
 <html>
 <head>
-    <title>ЖД- Паспорт</title>
+    <title>ЖД- Станция</title>
 </head>
 <body>
-<h1>Поздравляем, Вы добавили паспорт! </h1>
+<h1>Поздравляем, Вы добавили станцию ${model.id} </h1>
 </body>
 </html>

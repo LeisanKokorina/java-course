@@ -1,17 +1,16 @@
 <#ftl encoding='UTF-8'>
 <html>
 <head>
-    <title>ЖД- Паcпорт</title>
+    <title>ЖД- Станции</title>
     <script type="text/javascript" src="/js/form_script.js"></script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<form class="form-style-4" title="Паcпорт"
-      name="PassportForm"
+<form class="form-style-4" title="Станции"
+      name="stationForm"
       method="post"
-      action="/insertPassports">
-    <input type="text" name="number" placeholder="Номер"/>
-    <br>
+      action="/insertStations">
+    <input type="text" name="name" placeholder="Имя"/>
 
 
     <input type="submit"/>

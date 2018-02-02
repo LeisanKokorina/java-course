@@ -21,5 +21,5 @@ public class Passenger {
     private String middleName;
     private String lastName;
 
-    private Long documentId;
+    private String document;
 }

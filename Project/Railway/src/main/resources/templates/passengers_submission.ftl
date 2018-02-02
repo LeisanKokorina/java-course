@@ -16,7 +16,7 @@
     <br>
     <input type="text" name="lastName" placeholder="Фамилия"/>
     <br>
-    <input type="text" name="documentId" placeholder="Документ"/>
+    <input type="text" name="document" placeholder="Документ"/>
     <br>
 
     <input type="submit"/>

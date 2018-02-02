@@ -3,21 +3,19 @@
 <@spring.bind "model"/>
 <html>
 <head>
-    <title>Паспорт</title>
+    <title>Станции</title>
 </head>
 <body>
 <table>
     <tr>
         <th>ID</th>
-        <th>Номер</th>
-
+        <th>Имя</th>
 
     </tr>
-    <#list model.passports as passport>
+    <#list model.stations as station>
     <tr>
-        <td>${passport.id}</td>
-        <td>${passport.number}</td>
-
+        <td>${station.id}</td>
+        <td>${station.name}</td>
 
     </tr>
     </#list>
