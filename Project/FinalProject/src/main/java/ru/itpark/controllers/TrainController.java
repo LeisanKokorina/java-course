@@ -19,20 +19,20 @@ public class TrainController {
     private TrainService service;
 
     @GetMapping(value = "/trains")
-    public String getUsers(@ModelAttribute("model")ModelMap model,
+    public String getTrains(@ModelAttribute("model")ModelMap model,
                            @RequestParam("order_by") String orderBy) {
         List<Train> trains = service.getTrains(orderBy);
         model.addAttribute("trains", trains);
         return "trains_page";
     }
-    @PostMapping(value = "/insertTrain")
+    @PostMapping(value = "/insert/train")
     public String addTrain(@ModelAttribute TrainForm form,
                            @ModelAttribute("model") ModelMap model){
         Long newTrainId = service.addTrain(form);
         model.addAttribute("id",newTrainId);
         return "addition_train_success";
     }
-    @GetMapping("/insertTrain")
+    @GetMapping("/insert/train")
     public String getTrainPage() {
         return "addition_train";
     }

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class TicketForm {
     private Long userId;
     private Long trainId;
+    private Long routeId;
     private String date;
     private String time;
     private int seat;

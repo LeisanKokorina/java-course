@@ -19,6 +19,7 @@
     <input type="text" name="email" placeholder="Почта"/>
     <br>
     <input type="password" name="password" placeholder="Пароль"/>
+    <input type="checkbox" name="remember-me">Запомнить
     <input type="submit">
 </form>
 </body>

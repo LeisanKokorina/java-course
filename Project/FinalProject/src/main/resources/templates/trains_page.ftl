@@ -1,9 +1,10 @@
 <#ftl encoding='UTF-8'>
 <#import 'spring.ftl' as spring>
 <@spring.bind "model"/>
+<#include 'common/header.ftl'/>
 <html>
 <head>
-    <title>Станции</title>
+    <title>Информация о поезде</title>
 </head>
 <body>
 <table>
@@ -16,7 +17,7 @@
         <th>Время отправления</th>
         <th>Дата прибытия</th>
         <th>Время прибытия</th>
-        <th>Мест</th>
+
 
     </tr>
     <#list model.trains as train>
@@ -29,7 +30,7 @@
         <td>${train.departureTime}</td>
         <td>${train.arrivalDate}</td>
         <td>${train.arrivalTime}</td>
-        <td>${train.seatCount}</td>
+
 
     </tr>
     </#list>

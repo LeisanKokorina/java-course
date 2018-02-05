@@ -1,6 +1,7 @@
 <#ftl encoding='UTF-8'>
 <#import 'spring.ftl' as spring>
 <@spring.bind "model"/>
+<#include 'common/header.ftl'/>
 <html>
 <head>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -1,6 +1,7 @@
 <#ftl encoding='UTF-8'>
 <#import 'spring.ftl' as spring>
 <@spring.bind "model"/>
+<#include 'common/header.ftl'/>
 <html>
 <head>
     <title>Маршруты</title>

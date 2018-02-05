@@ -27,6 +27,7 @@ public class UsersController {
           @ModelAttribute("model") ModelMap model,
           Authentication authentication) {
     User user = authenticationService.getUserByAuthentication(authentication);
+    model.addAttribute("role",user.getRole());
     model.addAttribute("user", user);
     return "profile";
   }

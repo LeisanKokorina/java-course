@@ -19,20 +19,20 @@ public class RouteController {
     private RouteService service;
 
     @GetMapping(value = "/routes")
-    public String getUsers(@ModelAttribute("model")ModelMap model,
+    public String getRoutes(@ModelAttribute("model")ModelMap model,
                            @RequestParam("order_by") String orderBy) {
         List<Route> routes = service.getRoutes(orderBy);
         model.addAttribute("routes", routes);
         return "routes_page";
     }
-    @PostMapping(value = "/insertRoute")
+    @PostMapping(value = "/insert/route")
     public String addRoute(@ModelAttribute RouteForm form,
                            @ModelAttribute("model") ModelMap model){
         Long newRouteId = service.addRoute(form);
         model.addAttribute("id",newRouteId);
         return "addition_route_success";
     }
-    @GetMapping("/insertRoute")
+    @GetMapping("/insert/route")
     public String getRoutePage() {
         return "addition_route";
     }

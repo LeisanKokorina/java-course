@@ -4,11 +4,7 @@
     <title>ЖД- Регистрация</title>
     <script type="text/javascript" src="/js/form_script.js"></script>
     <link rel="stylesheet" href="/css/style.css">
-    <style>
-        body{
-            background-image: url("static/img/railway-12.jpg");
-        }
-    </style>
+
 </head>
 <body>
 <form class="form-style-4" title="Регистрация"

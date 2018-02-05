@@ -13,9 +13,9 @@ public class TrainForm {
     private String trainNumber;
     private Long routeId;
     private int fare;
-    private String departureDate;
-    private String arrivalDate;
-    private String departureTime;
-    private String arrivalTime;
-    private int seatCount;
+    private LocalDate departureDate;
+    private LocalDate arrivalDate;
+    private LocalTime departureTime;
+    private LocalTime arrivalTime;
+   // private int seatCount;
 }
