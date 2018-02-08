@@ -26,9 +26,12 @@ public class UsersController {
   public String getProfilePage(
           @ModelAttribute("model") ModelMap model,
           Authentication authentication) {
+    if (authentication != null) {
     User user = authenticationService.getUserByAuthentication(authentication);
     model.addAttribute("role",user.getRole());
     model.addAttribute("user", user);
+    }
+
     return "profile";
   }
 

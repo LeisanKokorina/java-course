@@ -7,12 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RouteRepository extends JpaRepository<Route, Long> {
-   // List<String> findAllOrigin();
-    List<Route> findByOrderByOrigin();
-    List<Route> findByOrderByDestination();
+    List<Route> findByOrderByPickUpPoint();
+    List<Route> findByOrderByRoutePoint();
     List<Route> findByOrderById();
-    Optional<Route> findByOrigin(String origin);
-    Optional<Route> findByDestination(String destination);
 
 
 

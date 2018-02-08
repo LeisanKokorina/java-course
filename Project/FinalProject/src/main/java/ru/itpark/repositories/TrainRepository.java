@@ -9,11 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface TrainRepository extends JpaRepository<Train, Long> {
-    List<Train> findByRouteIdAndDepartureDate(Long routeId, LocalDate date);
-
-    List<Train> findByOrderByDepartureDate();
-    List<Train> findByOrderByRouteId();
     List<Train> findByOrderById();
-    List<Train> findByOrderByFare();
+    List<Train> findByOrderByTrainNumber();
+   // List<Train> getTrainsByDepartureDateAndRouteList()
 
 }

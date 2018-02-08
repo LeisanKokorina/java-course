@@ -3,6 +3,7 @@ package ru.itpark.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
@@ -19,13 +20,11 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "users_id")
-    private Long userId;
-    @Column(name = "train_id")
-    private Long trainId;
-    private String date;
-    private String time;
-    private int seat;
+
+    private BigDecimal price;
+
+    @OneToOne(mappedBy = "ticket")
+    private User user;
 
 
 

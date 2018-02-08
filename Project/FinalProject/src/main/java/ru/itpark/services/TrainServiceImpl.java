@@ -2,9 +2,11 @@ package ru.itpark.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.itpark.forms.RouteForm;
 import ru.itpark.forms.TrainForm;
 import ru.itpark.models.Route;
 import ru.itpark.models.Train;
+import ru.itpark.repositories.RouteRepository;
 import ru.itpark.repositories.TrainRepository;
 
 import java.sql.SQLClientInfoException;
@@ -21,42 +23,37 @@ public class TrainServiceImpl implements TrainService {
     @Override
     public Long addTrain(TrainForm form) {
         Train newTrain = Train.builder()
-                .routeId(form.getRouteId())
                 .trainNumber(form.getTrainNumber())
+                .departure(form.getDeparture())
+                .destination(form.getDestination())
                 .departureDate(form.getDepartureDate())
                 .departureTime(form.getDepartureTime())
                 .arrivalDate(form.getArrivalDate())
                 .arrivalTime(form.getArrivalTime())
-                .fare(form.getFare())
                 .build();
         trainRepository.save(newTrain);
         return newTrain.getId();
     }
 
-
     @Override
-    public List<Train> findByRouteAndDate(Route route, LocalDate date) {
-        return trainRepository.findByRouteIdAndDepartureDate(route.getId(),date);
-
-
+    public List<Train> getTrains() {
+        return trainRepository.findAll();
     }
 
     @Override
     public List<Train> getTrains(String orderBy) {
         switch (orderBy) {
-            case "id":return trainRepository.findByOrderById();
-            case "route_id": return trainRepository.findByOrderByRouteId();
-            case "departure_date": return trainRepository.findByOrderByDepartureDate();
-            case "fare": return trainRepository.findByOrderByFare();
-            //case "route_id+date":return trainRepository.findByRouteIdAndDepartureDate(orderBy,);
-
+            case "train_number": return trainRepository.findByOrderByTrainNumber();
+            case "id": return trainRepository.findByOrderById();
 
         }
         return trainRepository.findAll();
     }
 
     @Override
-    public Train getTrain(Long trainId) {
-        return trainRepository.findOne(trainId);
+    public void update(Long trainId, TrainForm form) {
+        Train train = trainRepository.findOne(trainId);
+        form.update(train);
+        trainRepository.save(train);
     }
 }

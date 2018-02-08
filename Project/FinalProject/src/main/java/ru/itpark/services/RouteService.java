@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface RouteService {
     List<Route> getRoutes(String orderBy);
+    List<Route> getRoutes();
+    void update(Long routeId, RouteForm form);
     Route getRoute(Long routeId);
     Long addRoute(RouteForm form);
 }

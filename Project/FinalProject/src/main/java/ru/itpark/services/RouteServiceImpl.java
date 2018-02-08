@@ -12,29 +12,41 @@ import java.util.List;
 public class RouteServiceImpl implements RouteService {
     @Autowired
     private RouteRepository routeRepository;
-    @Override
-    public List<Route> getRoutes(String orderBy) {
-        switch (orderBy) {
-            case "id": return routeRepository.findByOrderById();
-            case "origin": return routeRepository.findByOrderByOrigin();
-            case "destination": return routeRepository.findByOrderByDestination();
-
-        }
-        return routeRepository.findAll();
-    }
 
     @Override
     public Long addRoute(RouteForm form) {
         Route newRoute = Route.builder()
-                .origin(form.getOrigin())
-                .destination(form.getDestination())
+                .pickUpPoint(form.getPickUpPoint())
+                .routePoint(form.getRoutePoint())
                 .build();
         routeRepository.save(newRoute);
         return newRoute.getId();
     }
 
     @Override
+    public List<Route> getRoutes() {
+        return routeRepository.findAll();
+    }
+
+    @Override
     public Route getRoute(Long routeId) {
         return routeRepository.findOne(routeId);
+    }
+
+    @Override
+    public List<Route> getRoutes(String orderBy) {
+        switch (orderBy) {
+            case "pickUpPoint": return routeRepository.findByOrderByPickUpPoint();
+            case "id": return routeRepository.findByOrderById();
+            case "routePoint": return routeRepository.findByOrderByRoutePoint();
+        }
+        return routeRepository.findAll();
+    }
+
+    @Override
+    public void update(Long routeId, RouteForm form) {
+        Route route = routeRepository.findOne(routeId);
+        form.update(route);
+        routeRepository.save(route);
     }
 }

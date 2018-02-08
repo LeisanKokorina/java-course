@@ -14,7 +14,7 @@
       action="/insert/train">
     <input type="text" name="trainNumber" placeholder="№ поезда"/>
     <input type="text" name="routeId" placeholder="№ Ммаршрута"/>
-    <input type="text" name="fare" placeholder="Цена билета"/>
+
     <input type="text" name="departureDate" placeholder="Дата отправления"/>
     <input type="text" name="arrivalDate" placeholder="Дата прибытия"/>
     <input type="text" name="departureTime" placeholder="Время отправления"/>

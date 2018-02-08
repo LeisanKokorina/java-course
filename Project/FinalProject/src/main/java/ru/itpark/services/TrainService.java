@@ -9,12 +9,8 @@ import java.util.List;
 
 public interface TrainService {
     List<Train> getTrains(String orderBy);
-    List<Train> findByRouteAndDate(Route route, LocalDate date);
-
-
-    Train getTrain(Long trainId);
-
-
+    List<Train> getTrains();
+    void update(Long trainId, TrainForm form);
     Long addTrain(TrainForm form);
 
 }

@@ -33,4 +33,9 @@ public class User {
 
   @Enumerated(value = EnumType.STRING)
   private Role role;
+
+
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "ticket_id")
+  private Ticket ticket;
 }

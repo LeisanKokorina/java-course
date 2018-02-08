@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "route")
@@ -19,8 +20,11 @@ public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String origin;
-    private String destination;
+    private String pickUpPoint;
+    private String routePoint;
+    @ManyToOne
+    @JoinColumn(name="train_id")
+    private Train train;
 
 
 }

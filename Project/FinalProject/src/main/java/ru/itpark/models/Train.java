@@ -5,7 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -22,14 +24,17 @@ public class Train {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String trainNumber;
-    @Column(name = "route_id")
-    private Long routeId;
-    private int fare;
+
+    private String departure;
+    private String destination;
     private LocalDate departureDate;
     private LocalDate arrivalDate;
     private LocalTime departureTime;
     private LocalTime arrivalTime;
-  //  private int seatCount;
+
+    @OneToMany(mappedBy = "train")
+    private Set<Route> routes = new HashSet<>();
+
 
 
 
