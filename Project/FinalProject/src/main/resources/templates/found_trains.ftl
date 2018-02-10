@@ -3,7 +3,7 @@
 <@spring.bind "model"/>
 <html lang="en">
 <head>
-    <title>ЖД- Список поездов</title>
+    <title>ЖД- Добавление Маршрута</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -78,7 +78,7 @@
 
 <div class="container">
     <h2>Список поездов</h2>
-
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -94,16 +94,16 @@
         </thead>
         <tbody>
          <#list model.trains as train>
-        <tr>
-            <td>${train.id}</td>
-            <td>${train.trainNumber}</td>
-            <td>${train.departure}</td>
-            <td>${train.destination}</td>
-            <td>${train.departureDate}</td>
-            <td>${train.departureTime}</td>
-            <td>${train.arrivalDate}</td>
-            <td>${train.arrivalTime}</td>
-        </tr>
+         <tr>
+             <td>${train.id}</td>
+             <td>${train.trainNumber}</td>
+             <td>${train.departure}</td>
+             <td>${train.destination}</td>
+             <td>${train.departureDate}</td>
+             <td>${train.departureTime}</td>
+             <td>${train.arrivalDate}</td>
+             <td>${train.arrivalTime}</td>
+         </tr>
          </#list>
 
         </tbody>

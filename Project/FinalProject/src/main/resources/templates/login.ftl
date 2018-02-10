@@ -18,9 +18,12 @@
     <div class="alert alert-warning">
         <strong>Warning!</strong> Неверно введен email или пароль!
     </div>
+
+
+
 </#if>
     <form
-        title="Регистрация"
+        title="Вход"
         name="registrationForm"
         method="post"
         action="/login">
@@ -34,7 +37,7 @@
         </div>
         <br>
         <div class="checkbox">
-            <label><input type="checkbox" value="remember-me">Запомнить</label>
+            <label><input type="checkbox" name="remember-me">Запомнить</label>
         </div>
         <br>
         <div>
@@ -42,7 +45,6 @@
 
         </div>
     </form>
-    <br>
 
 
 </div>

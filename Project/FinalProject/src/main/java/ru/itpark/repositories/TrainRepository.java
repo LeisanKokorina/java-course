@@ -7,10 +7,13 @@ import ru.itpark.models.Train;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 public interface TrainRepository extends JpaRepository<Train, Long> {
     List<Train> findByOrderById();
     List<Train> findByOrderByTrainNumber();
-   // List<Train> getTrainsByDepartureDateAndRouteList()
+    List<Train> findByRoutesAndDepartureDate(Set<Route> routes, LocalDate departureDate);
+
+
 
 }

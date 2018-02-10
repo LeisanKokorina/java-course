@@ -36,4 +36,13 @@ public class TrainController {
     public String getTrainPage() {
         return "addition_train";
     }
+
+
+    @PostMapping("/")
+    public String getTrainByRoute(@ModelAttribute TrainForm form,
+                                  @ModelAttribute("model") ModelMap model){
+        List<Train> trains = service.findByRoutesAndDepartureDate(form);
+        model.addAttribute("trains", trains);
+        return "found_trains";
+    }
 }

@@ -3,7 +3,7 @@
 <@spring.bind "model"/>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Бронирование ЖД билетов</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -66,7 +66,8 @@
         <#if model.user??>
             ${model.user.name}
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Выйти</a></li>
+                <li><a href="/profile"><span class="glyphicon glyphicon-traveler"></span>Личный кабинет</a></li>
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Выйти</a></li>
             </ul>
         <#else>
         <ul class="nav navbar-nav navbar-right">
@@ -82,9 +83,35 @@
         <div class="col-sm-2 sidenav">
             <p><a href="/profile">Личный кабинет</a></p>
 
+                <form title="Найти поезд"
+                      name="MainPageForm"
+                      method="post"
+                      action="/">
+                    <div class="input-group">
+
+                        <input id="from" type="text" class="form-control" name="pickUpPoint" placeholder="Откуда">
+                    </div>
+                    <div class="input-group">
+
+                        <input id="to" type="text" class="form-control" name="routePoint" placeholder="Куда">
+                    </div>
+                    <br>
+                    <div class="input-group">
+
+                        <input id="date" type="date" class="form-control" name="departureDate" placeholder="2018-12-22">
+                    </div>
+                    <br>
+                    <div>
+                        <input type="submit">
+
+                    </div>
+
+
+                </form>
+
         </div>
         <div class="col-sm-8 text-center">
-            <h1>Бронирование жд билетов</h1>
+            <h1>Бронирование ЖД билетов</h1>
 
 
         </div>
@@ -92,14 +119,7 @@
 
 
 
-        <div class="col-sm-2 sidenav">
-            <div class="well">
-                <p>ADS</p>
-            </div>
-            <div class="well">
-                <p>ADS</p>
-            </div>
-        </div>
+
     </div>
 </div>
 

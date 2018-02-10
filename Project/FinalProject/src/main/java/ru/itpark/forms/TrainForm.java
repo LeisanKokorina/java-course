@@ -15,21 +15,23 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+
 @Data
 @ToString
 public class TrainForm {
     private String trainNumber;
-  //  private Long routeId;
-  //  private int fare;
     private String departure;
     private String destination;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+  //  @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate departureDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+   // @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate arrivalDate;
+ //   @DateTimeFormat(pattern = "hh:mm")
     private LocalTime departureTime;
+   // @DateTimeFormat(pattern = "hh:mm")
     private LocalTime arrivalTime;
-   // private List<Route> routeList;
+    private Set<Route> routes;
 
     public void update(Train train) {
         train.setTrainNumber(this.trainNumber);

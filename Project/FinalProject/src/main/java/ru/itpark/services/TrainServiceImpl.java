@@ -14,11 +14,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Service
 public class TrainServiceImpl implements TrainService {
     @Autowired
     private TrainRepository trainRepository;
+
+    @Override
+    public List<Train> findByRoutesAndDepartureDate(TrainForm form) {
+
+        return trainRepository.findByRoutesAndDepartureDate(form.getRoutes(),form.getDepartureDate());
+    }
 
     @Override
     public Long addTrain(TrainForm form) {
@@ -30,21 +37,20 @@ public class TrainServiceImpl implements TrainService {
                 .departureTime(form.getDepartureTime())
                 .arrivalDate(form.getArrivalDate())
                 .arrivalTime(form.getArrivalTime())
+                .routes(form.getRoutes())
                 .build();
         trainRepository.save(newTrain);
         return newTrain.getId();
     }
 
-    @Override
-    public List<Train> getTrains() {
-        return trainRepository.findAll();
-    }
+
 
     @Override
     public List<Train> getTrains(String orderBy) {
         switch (orderBy) {
             case "train_number": return trainRepository.findByOrderByTrainNumber();
             case "id": return trainRepository.findByOrderById();
+
 
         }
         return trainRepository.findAll();

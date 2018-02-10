@@ -7,13 +7,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 
-
+import ru.itpark.forms.TrainForm;
+import ru.itpark.models.Train;
 import ru.itpark.models.User;
 import ru.itpark.services.AuthenticationService;
 
-
-
-
+import java.util.List;
 
 
 @Controller
@@ -28,8 +27,10 @@ public class MainPageController {
             User user = authenticationService.getUserByAuthentication(authentication);
             model.addAttribute("user", user);
         }
+
         return "main_page";
     }
+
 
 
 

@@ -44,6 +44,16 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
+    public Long findRoute(RouteForm form) {
+        Route route = Route.builder()
+                .pickUpPoint(form.getPickUpPoint())
+                .routePoint(form.getRoutePoint())
+                .train(form.getTrain())
+                .build();
+        return route.getId();
+    }
+
+    @Override
     public void update(Long routeId, RouteForm form) {
         Route route = routeRepository.findOne(routeId);
         form.update(route);

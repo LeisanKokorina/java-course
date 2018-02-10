@@ -6,11 +6,15 @@ import ru.itpark.models.Train;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 public interface TrainService {
     List<Train> getTrains(String orderBy);
-    List<Train> getTrains();
+
     void update(Long trainId, TrainForm form);
     Long addTrain(TrainForm form);
+
+
+    List<Train> findByRoutesAndDepartureDate(TrainForm form);
 
 }

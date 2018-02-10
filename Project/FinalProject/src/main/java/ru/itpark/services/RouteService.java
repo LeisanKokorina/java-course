@@ -11,4 +11,6 @@ public interface RouteService {
     void update(Long routeId, RouteForm form);
     Route getRoute(Long routeId);
     Long addRoute(RouteForm form);
+    Long findRoute(RouteForm form);
+
 }
