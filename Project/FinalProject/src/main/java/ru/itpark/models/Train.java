@@ -1,6 +1,7 @@
 package ru.itpark.models;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -27,7 +28,9 @@ public class Train {
 
     private String departure;
     private String destination;
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDate departureDate;
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDate arrivalDate;
     private LocalTime departureTime;
     private LocalTime arrivalTime;

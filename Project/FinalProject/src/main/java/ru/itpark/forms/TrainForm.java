@@ -23,9 +23,9 @@ public class TrainForm {
     private String trainNumber;
     private String departure;
     private String destination;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDate departureDate;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDate arrivalDate;
     @DateTimeFormat(pattern = "hh:mm")
     private LocalTime departureTime;
