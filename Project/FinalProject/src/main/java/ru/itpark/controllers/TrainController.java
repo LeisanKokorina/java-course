@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.itpark.forms.MainPageForm;
 import ru.itpark.forms.TrainForm;
 import ru.itpark.models.Train;
 import ru.itpark.services.TrainService;
@@ -39,7 +40,7 @@ public class TrainController {
 
 
     @PostMapping("/")
-    public String getTrainByRoute(@ModelAttribute TrainForm form,
+    public String getTrainByRoute(@ModelAttribute MainPageForm form,
                                   @ModelAttribute("model") ModelMap model){
         List<Train> trains = service.findByRoutesAndDepartureDate(form);
         model.addAttribute("trains", trains);

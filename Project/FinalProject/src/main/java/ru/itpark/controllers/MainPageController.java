@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 
+import ru.itpark.forms.MainPageForm;
 import ru.itpark.forms.TrainForm;
 import ru.itpark.models.Train;
 import ru.itpark.models.User;

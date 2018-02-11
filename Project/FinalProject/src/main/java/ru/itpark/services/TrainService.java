@@ -1,5 +1,6 @@
 package ru.itpark.services;
 
+import ru.itpark.forms.MainPageForm;
 import ru.itpark.forms.TrainForm;
 import ru.itpark.models.Route;
 import ru.itpark.models.Train;
@@ -15,6 +16,6 @@ public interface TrainService {
     Long addTrain(TrainForm form);
 
 
-    List<Train> findByRoutesAndDepartureDate(TrainForm form);
+    List<Train> findByRoutesAndDepartureDate(MainPageForm form);
 
 }

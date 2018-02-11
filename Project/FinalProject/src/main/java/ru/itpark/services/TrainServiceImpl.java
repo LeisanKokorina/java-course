@@ -2,6 +2,7 @@ package ru.itpark.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.itpark.forms.MainPageForm;
 import ru.itpark.forms.RouteForm;
 import ru.itpark.forms.TrainForm;
 import ru.itpark.models.Route;
@@ -22,7 +23,7 @@ public class TrainServiceImpl implements TrainService {
     private TrainRepository trainRepository;
 
     @Override
-    public List<Train> findByRoutesAndDepartureDate(TrainForm form) {
+    public List<Train> findByRoutesAndDepartureDate(MainPageForm form) {
 
         return trainRepository.findByRoutesAndDepartureDate(form.getRoutes(),form.getDepartureDate());
     }
@@ -37,7 +38,6 @@ public class TrainServiceImpl implements TrainService {
                 .departureTime(form.getDepartureTime())
                 .arrivalDate(form.getArrivalDate())
                 .arrivalTime(form.getArrivalTime())
-                .routes(form.getRoutes())
                 .build();
         trainRepository.save(newTrain);
         return newTrain.getId();

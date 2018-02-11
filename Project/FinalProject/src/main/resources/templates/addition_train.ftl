@@ -106,11 +106,11 @@
                 </div>
                 <div class="input-group3">
 
-                    <input  type="date" class="form-control" name="departureDate" placeholder="Дата отправления ">
+                    <input  type="date" pattern="dd/MM/yyyy" class="form-control" name="departureDate" placeholder="Дата отправления ">
                 </div>
                 <div class="input-group3">
 
-                    <input  type="date" class="form-control" name="arrivalDate" placeholder="Дата прибытия ">
+                    <input  type="date" pattern="dd/MM/yyyy"  class="form-control" name="arrivalDate" placeholder="Дата прибытия ">
                 </div>
                 <div class="input-group3">
 
@@ -118,7 +118,7 @@
                 </div>
                 <div class="input-group3">
 
-                    <input  type="time" class="form-control" name="arrivalTime" placeholder="Время прибытия ">
+                    <input  type="time" pattern="" class="form-control" name="arrivalTime" placeholder="Время прибытия ">
                 </div>
                 <br>
 

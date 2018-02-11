@@ -32,8 +32,9 @@ public class Train {
     private LocalTime departureTime;
     private LocalTime arrivalTime;
 
-    @OneToMany(mappedBy = "train", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Route> routes ;
+
+    @OneToMany(mappedBy = "train")
+    private List<Route> routes ;
 
 
 

@@ -23,15 +23,15 @@ public class TrainForm {
     private String trainNumber;
     private String departure;
     private String destination;
-  //  @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate departureDate;
-   // @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate arrivalDate;
- //   @DateTimeFormat(pattern = "hh:mm")
+    @DateTimeFormat(pattern = "hh:mm")
     private LocalTime departureTime;
-   // @DateTimeFormat(pattern = "hh:mm")
+    @DateTimeFormat(pattern = "hh:mm")
     private LocalTime arrivalTime;
-    private Set<Route> routes;
+   // private Set<Route> routes;
 
     public void update(Train train) {
         train.setTrainNumber(this.trainNumber);
