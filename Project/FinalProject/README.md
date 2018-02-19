@@ -1,6 +1,6 @@
-## Railway ticket reservation system
+## Railway tickets reservation system
 
-Ticket reservation system application, written in java using Spring Boot.
+Tickets reservation system application written in Java using Spring Boot.
 
 Install Prerequisite Software:
 * Java 1.8
