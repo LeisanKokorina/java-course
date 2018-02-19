@@ -9,43 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
-    <style>
-        /* Remove the navbar's default margin-bottom and rounded borders */
-        .navbar {
-            margin-bottom: 0;
-            border-radius: 0;
-        }
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {height: 450px}
-
-        /* Set gray background color and 100% height */
-        .sidenav {
-            padding-top: 20px;
-            background-color: white;
-            height: 100%;
-
-        }
-
-        /* Set black background color, white text and some padding */
-        footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
-        }
-
-        /* On small screens, set height to 'auto' for sidenav and grid */
-        @media screen and (max-width: 767px) {
-            .sidenav {
-                height: auto;
-                padding: 15px;
-            }
-            .row.content {height:auto;}
-        }
-
-
-    </style>
 </head>
 <body>
 
@@ -119,7 +84,7 @@
             </form>
 
         </div>
-        <img src="https://cs.pikabu.ru/post_img/2013/10/25/7/1382692194_687472730.gif" class="img-thumbnail" alt="Cinque Terre">
+        <img src="https://cs.pikabu.ru/post_img/2013/10/25/7/1382692194_687472730.gif" class="img-thumbnail" alt="train">
     </div>
 </div>
 

@@ -34,12 +34,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .antMatchers("/js/**").permitAll()
           .antMatchers("/").permitAll()
           .antMatchers("/static/img/**").permitAll()
-          .antMatchers("/profile/**").hasAnyAuthority("USER", "ADMIN") // разрешили админу и пользователям
-          .antMatchers("/users/**").hasAnyAuthority("ADMIN") // только админу
-          .antMatchers("/insert/**").hasAnyAuthority("ADMIN") // только админу
-          .anyRequest().authenticated() // все остальные запросы требуют предварительной авторизации
+          .antMatchers("/profile/**").hasAnyAuthority("USER", "ADMIN")
+          .antMatchers("/users/**").hasAnyAuthority("ADMIN")
+          .antMatchers("/insert/**").hasAnyAuthority("ADMIN")
+          .anyRequest().authenticated()
             .and()
-        .formLogin() // блок с формой входа
+        .formLogin()
           .loginPage("/login")
           .usernameParameter("email")
           .passwordParameter("password")

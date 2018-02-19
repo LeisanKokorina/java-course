@@ -61,13 +61,6 @@ public class RouteController {
 
         return "found_trains";
     }
-//    @PostMapping(value = "/ticket")
-//    public String getOrderPage(@ModelAttribute RouteForm form,
-//                               @ModelAttribute("model") ModelMap model){
-//        Route route=service.;
-//        model.addAttribute("route", route);
-//        return "passenger_info";
-//
-//    }
+
 
 }

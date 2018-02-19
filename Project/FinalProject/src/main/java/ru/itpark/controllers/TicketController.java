@@ -25,17 +25,5 @@ public class TicketController {
 
 
 
-//     @PostMapping(value = "/ticket")
-//     public String getOrder(@ModelAttribute RouteForm routeForm, NamesForm form, Authentication authentication,
-//                             @ModelAttribute("model") ModelMap model){
-//          if (authentication != null) {
-//               User user = authenticationService.getUserByAuthentication(authentication);
-//               model.addAttribute("user", user);
-//          }
-//          Route route =
-//          Ticket newTicket = service.addTicket( routeForm,  form);
-//          model.addAttribute("ticket",newTicket);
-//          return "ticket_page";
-//     }
 
 }
