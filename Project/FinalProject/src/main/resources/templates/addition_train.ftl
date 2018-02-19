@@ -54,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/static/img/train-5-256.png">Logo</a>
+
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -75,15 +75,43 @@
     </div>
 </nav>
 
-
 <div class="container-fluid text-center">
-
     <div class="row content">
         <div class="col-sm-2 sidenav">
 
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/routes?order_by=id">Список маршрутов
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
 
+                    <li><a href="/routes?order_by=id">По id</a></li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Список поездов
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/trains?order_by=train_number">По  номеру поезда</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Маршрут
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/insert/route">Добавить маршрут</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Поезд
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/insert/train">Добавить поезд</a></li>
+                </ul>
+            </li>
 
         </div>
+
 
         <div class="col-sm-5 text-center">
             <h3>Добавление поезда</h3>
@@ -104,22 +132,7 @@
 
                     <input  type="text" class="form-control" name="destination" placeholder="Станция прибытия">
                 </div>
-                <div class="input-group3">
 
-                    <input  type="date"  class="form-control" name="departureDate" placeholder="22-02-2018">
-                </div>
-                <div class="input-group3">
-
-                    <input  type="date"   class="form-control" name="arrivalDate" placeholder="22-02-2018 ">
-                </div>
-                <div class="input-group3">
-
-                    <input  type="time" class="form-control" name="departureTime" placeholder="Время отправления ">
-                </div>
-                <div class="input-group3">
-
-                    <input  type="time"  class="form-control" name="arrivalTime" placeholder="Время прибытия ">
-                </div>
                 <br>
 
                 <div>
@@ -133,7 +146,7 @@
     </div>
 </div>
 
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-right">
     <p>@springrain</p>
 </footer>
 

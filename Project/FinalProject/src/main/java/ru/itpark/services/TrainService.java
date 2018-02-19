@@ -3,6 +3,7 @@ package ru.itpark.services;
 import ru.itpark.forms.MainPageForm;
 import ru.itpark.forms.TrainForm;
 import ru.itpark.models.Route;
+import ru.itpark.models.Station;
 import ru.itpark.models.Train;
 
 import java.time.LocalDate;
@@ -14,8 +15,10 @@ public interface TrainService {
 
     void update(Long trainId, TrainForm form);
     Long addTrain(TrainForm form);
+    Train getTrain(Long trainId);
 
 
-    List<Train> findByRoutesAndDepartureDate(MainPageForm form);
+
+    List<Train> findByRoutes(TrainForm form);
 
 }

@@ -8,10 +8,24 @@ import java.time.LocalDate;
 @Data
 @ToString
 public class TicketForm {
-    private Long userId;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String document;
+    private String pickUpPoint;
+    private String routePoint;
+    private int price;
+    private String departureDate;
+    private String arrivalDate;
+    private String departureTime;
+    private String arrivalTime;
     private Long trainId;
-    private Long routeId;
-    private String date;
-    private String time;
-    private int seat;
+    //private Long userId;
+
+//    private String firstName;
+//    private String middleName;
+//    private String lastName;
+//    private String document;
+//    //private String sex;
+//    private String birthday;
 }

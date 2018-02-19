@@ -54,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/static/img/train-5-256.png">Logo</a>
+
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -74,43 +74,79 @@
 
     </div>
 </nav>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/routes?order_by=id">Список маршрутов
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+                    <li><a href="/routes?order_by=id">По id</a></li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Список поездов
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/trains?order_by=train_number">По  номеру поезда</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Маршрут
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/insert/route">Добавить маршрут</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Поезд
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/insert/train">Добавить поезд</a></li>
+                </ul>
+            </li>
+
+        </div>
 
 
-<div class="container">
-    <h2>Список поездов</h2>
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Номер поезда</th>
-            <th>Станция отправления</th>
-            <th>Станция прибытия</th>
-            <th>Дата отправления</th>
-            <th>Время отправления</th>
-            <th>Дата прибытия</th>
-            <th>Время прибытия</th>
-        </tr>
-        </thead>
-        <tbody>
-         <#list model.trains as train>
-        <tr>
-            <td>${train.id}</td>
-            <td>${train.trainNumber}</td>
-            <td>${train.departure}</td>
-            <td>${train.destination}</td>
-            <td>${train.departureDate}</td>
-            <td>${train.departureTime}</td>
-            <td>${train.arrivalDate}</td>
-            <td>${train.arrivalTime}</td>
-        </tr>
-         </#list>
 
-        </tbody>
-    </table>
+            <div class="col-sm-10 text-center">
+                <h2>Список поездов</h2>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Номер поезда</th>
+                        <th>Станция отправления</th>
+                        <th>Станция прибытия</th>
+                        <!--<th>Дата отправления</th>
+                        <th>Время отправления</th>
+                        <th>Дата прибытия</th>
+                        <th>Время прибытия</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                     <#list model.trains as train>
+                     <tr>
+                         <td>${train.id}</td>
+                         <td>${train.trainNumber}</td>
+                         <td>${train.departure}</td>
+                         <td>${train.destination}</td>
+
+                     </tr>
+                     </#list>
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
 </div>
-
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-right">
     <p>@springrain</p>
 </footer>
 

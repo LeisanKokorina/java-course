@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -27,6 +28,8 @@ public class User {
 
   private String confirmCode;
   private LocalDateTime expiredDate;
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  private List<Ticket> tickets;
 
   @Enumerated(value = EnumType.STRING)
   private State state;

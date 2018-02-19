@@ -1,0 +1,2 @@
+INSERT INTO public.route (id, arrival_date, arrival_time, departure_date, departure_time, pick_up_point, price, route_point, train_id) VALUES (3, '2018-02-17', '07:14:00', '2018-02-16', '14:56:00', 'Казань', 1500, 'Киров', 1);
+INSERT INTO public.route (id, arrival_date, arrival_time, departure_date, departure_time, pick_up_point, price, route_point, train_id) VALUES (4, '2018-02-15', '18:00:00', '2018-02-14', '15:00:00', 'Казань', 1550, 'Тверь', 2);

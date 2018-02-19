@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import ru.itpark.models.Route;
+import ru.itpark.models.Station;
 import ru.itpark.models.Train;
 
 
@@ -23,25 +24,26 @@ public class TrainForm {
     private String trainNumber;
     private String departure;
     private String destination;
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
-    private LocalDate departureDate;
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
-    private LocalDate arrivalDate;
-    @DateTimeFormat(pattern = "hh:mm")
-    private LocalTime departureTime;
-    @DateTimeFormat(pattern = "hh:mm")
-    private LocalTime arrivalTime;
-   // private Set<Route> routes;
+
+//    private String departureDate;
+//
+//    private String arrivalDate;
+//
+//    private String departureTime;
+//
+//    private String arrivalTime;
+    private List<Route> routes;
+    private List<Station> stations;
 
     public void update(Train train) {
         train.setTrainNumber(this.trainNumber);
         train.setDeparture(this.departure);
         train.setDestination(this.destination);
 
-        train.setDepartureDate(this.departureDate);
-        train.setDepartureTime(this.departureTime);
-        train.setArrivalDate(this.arrivalDate);
-        train.setArrivalTime(this.arrivalTime);
+//        train.setDepartureDate(LocalDate.parse(this.departureDate));
+//        train.setArrivalDate(LocalDate.parse(this.arrivalDate));
+//        train.setDepartureTime(LocalTime.parse(this.getDepartureTime()));
+//        train.setArrivalTime(LocalTime.parse(this.getArrivalTime()));
 
 
     }

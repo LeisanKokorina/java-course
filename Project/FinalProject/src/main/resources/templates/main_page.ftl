@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .navbar {
@@ -22,8 +23,9 @@
         /* Set gray background color and 100% height */
         .sidenav {
             padding-top: 20px;
-            background-color: lightgray;
+            background-color: white;
             height: 100%;
+
         }
 
         /* Set black background color, white text and some padding */
@@ -41,6 +43,8 @@
             }
             .row.content {height:auto;}
         }
+
+
     </style>
 </head>
 <body>
@@ -54,7 +58,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/static/img/train-5-256.png">Logo</a>
+
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -63,8 +67,10 @@
 
                 <li><a href="#">Контакты</a></li>
             </ul>
+
+
         <#if model.user??>
-            ${model.user.name}
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/profile"><span class="glyphicon glyphicon-traveler"></span>Личный кабинет</a></li>
                 <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Выйти</a></li>
@@ -78,52 +84,48 @@
     </div>
 </nav>
 
+
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
 
+        </div>
+        <div class="col-sm-7 text-center">
 
-                <form title="Найти поезд"
-                      name="MainPageForm"
-                      method="post"
-                      action="/">
-                    <div class="input-group">
+            <div class="well"
+            <h1>Пассажирам</h1>
+            </div>
+            <form title="Найти поезд"
+                  name="RouteForm"
+                  method="post"
+                  action="/">
+                <div class="form-inline">
 
-                        <input id="from" type="text" class="form-control" name="pickUpPoint" placeholder="Откуда">
+                    <div class="form-group">
+                        <label for="route">Откуда:</label>
+                        <input type="text" class="form-control" name="pickUpPoint"  id="route">
                     </div>
-                    <div class="input-group">
-
-                        <input id="to" type="text" class="form-control" name="routePoint" placeholder="Куда">
-                    </div>
-                    <br>
-                    <div class="input-group">
-
-                        <input id="date" type="date" class="form-control" name="departureDate" placeholder="2018-12-22">
-                    </div>
-                    <br>
-                    <div>
-                        <input type="submit">
-
+                    <div class="form-group">
+                        <label for="to">Куда:</label>
+                        <input type="text" class="form-control" name="routePoint" id="to">
                     </div>
 
+                    <div class="form-group">
+                        <label for="date">Дата:</label>
+                        <input type="date" class="form-control" name="departureDate" id="date">
+                    </div>
 
-                </form>
+                    <button  type="submit" class="btn btn-default">Найти поезд</button>
+            </form>
 
         </div>
-        <div class="col-sm-8 text-center">
-            <h1>Бронирование ЖД билетов</h1>
-
-
-        </div>
-
-
-
-
-
+        <img src="https://cs.pikabu.ru/post_img/2013/10/25/7/1382692194_687472730.gif" class="img-thumbnail" alt="Cinque Terre">
     </div>
 </div>
 
-<footer class="container-fluid text-center">
+
+
+<footer class="container-fluid text-right">
     <p>@springrain</p>
 </footer>
 

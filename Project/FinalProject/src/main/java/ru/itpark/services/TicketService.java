@@ -1,9 +1,14 @@
 package ru.itpark.services;
 
 import org.springframework.stereotype.Service;
+import ru.itpark.forms.NamesForm;
+import ru.itpark.forms.PassengerForm;
+import ru.itpark.forms.RouteForm;
+import ru.itpark.forms.TicketForm;
 import ru.itpark.models.Ticket;
 
-@Service
+
 public interface TicketService {
-    Ticket getTicket(Long ticketId);
+    Ticket addTicket(RouteForm routeForm,  NamesForm form);
+
 }

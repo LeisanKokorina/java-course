@@ -11,7 +11,11 @@ import ru.itpark.repositories.RouteRepository;
 import ru.itpark.repositories.TrainRepository;
 
 import java.sql.SQLClientInfoException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,21 +27,23 @@ public class TrainServiceImpl implements TrainService {
     private TrainRepository trainRepository;
 
     @Override
-    public List<Train> findByRoutesAndDepartureDate(MainPageForm form) {
+    public List<Train> findByRoutes(TrainForm form) {
 
-        return trainRepository.findByRoutesAndDepartureDate(form.getRoutes(),form.getDepartureDate());
+        return trainRepository.findByRoutes(form.getRoutes());
     }
 
     @Override
     public Long addTrain(TrainForm form) {
+
+
         Train newTrain = Train.builder()
                 .trainNumber(form.getTrainNumber())
                 .departure(form.getDeparture())
                 .destination(form.getDestination())
-                .departureDate(form.getDepartureDate())
-                .departureTime(form.getDepartureTime())
-                .arrivalDate(form.getArrivalDate())
-                .arrivalTime(form.getArrivalTime())
+//                .departureDate(LocalDate.parse(form.getDepartureDate()))
+//                .departureTime(LocalTime.parse(form.getDepartureTime()))
+//                .arrivalDate(LocalDate.parse(form.getArrivalDate()))
+//                .arrivalTime(LocalTime.parse(form.getArrivalTime()))
                 .build();
         trainRepository.save(newTrain);
         return newTrain.getId();
@@ -61,5 +67,10 @@ public class TrainServiceImpl implements TrainService {
         Train train = trainRepository.findOne(trainId);
         form.update(train);
         trainRepository.save(train);
+    }
+
+    @Override
+    public Train getTrain(Long trainId) {
+        return trainRepository.findOne(trainId);
     }
 }

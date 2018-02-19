@@ -27,6 +27,8 @@
         name="registrationForm"
         method="post"
         action="/login">
+
+
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
             <input id="email" type="text" class="form-control" name="email" placeholder="Email">
@@ -41,11 +43,11 @@
         </div>
         <br>
         <div>
-             <input type="submit">
+            <button type="submit" class="btn btn-default">Вход</button>           <a href="/registration">Регистрация</a>
+
 
         </div>
     </form>
-
 
 </div>
 

@@ -1,14 +1,16 @@
 package ru.itpark.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import ru.itpark.forms.MainPageForm;
 import ru.itpark.forms.RouteForm;
 import ru.itpark.models.Route;
+import ru.itpark.models.Train;
+import ru.itpark.models.User;
+import ru.itpark.services.AuthenticationService;
 import ru.itpark.services.RouteService;
 
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.List;
 public class RouteController {
     @Autowired
     private RouteService service;
+    @Autowired
+    private AuthenticationService authenticationService;
 
     @GetMapping(value = "/routes")
     public String getRoutes(@ModelAttribute("model")ModelMap model,
@@ -28,7 +32,8 @@ public class RouteController {
     @PostMapping(value = "/insert/route")
     public String addRoute(@ModelAttribute RouteForm form,
                            @ModelAttribute("model") ModelMap model){
-        Long newRouteId = service.addRoute(form);
+
+        Long newRouteId = service.addRoute(form.getTrainId(), form);
         model.addAttribute("id",newRouteId);
         return "addition_route_success";
     }
@@ -37,5 +42,32 @@ public class RouteController {
         return "addition_route";
     }
 
+
+
+    @PostMapping("/")
+    public String getTrainByRoute(@ModelAttribute RouteForm form,Authentication authentication,
+                                  @ModelAttribute("model") ModelMap model){
+        if (authentication != null) {
+            User user = authenticationService.getUserByAuthentication(authentication);
+            model.addAttribute("user", user);
+        }
+
+        List<Train> trains = service.getTrain(form);
+
+        List<Route> routes = service.getRoute(form);
+        model.addAttribute("trains",trains );
+        model.addAttribute("routes",routes);
+
+
+        return "found_trains";
+    }
+//    @PostMapping(value = "/ticket")
+//    public String getOrderPage(@ModelAttribute RouteForm form,
+//                               @ModelAttribute("model") ModelMap model){
+//        Route route=service.;
+//        model.addAttribute("route", route);
+//        return "passenger_info";
+//
+//    }
 
 }

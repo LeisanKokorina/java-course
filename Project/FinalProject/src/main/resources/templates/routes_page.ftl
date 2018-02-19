@@ -1,27 +1,166 @@
 <#ftl encoding='UTF-8'>
 <#import 'spring.ftl' as spring>
 <@spring.bind "model"/>
-<#include 'common/header.ftl'/>
-<html>
+<html lang="en">
 <head>
-    <title>Маршруты</title>
+    <title>ЖД- Список поездов</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 450px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: lightgray;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Станция отправления</th>
-        <th>Станция прибытия</th>
 
-    </tr>
-    <#list model.routes as route>
-    <tr>
-        <td>${route.id}</td>
-        <td>${route.origin}</td>
-        <td>${route.destination}</td>
 
-    </tr>
-    </#list>
-</table>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Главная</a></li>
+
+
+                <li><a href="#">Контакты</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="/profile"><span class="glyphicon glyphicon-user"></span>Личный кабинет</a></li>
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Выйти</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/routes?order_by=id">Список маршрутов
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+                    <li><a href="/routes?order_by=id">По id</a></li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Список поездов
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/trains?order_by=train_number">По  номеру поезда</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Маршрут
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/insert/route">Добавить маршрут</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Поезд
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/insert/train">Добавить поезд</a></li>
+                </ul>
+            </li>
+
+        </div>
+
+
+            <div class="col-sm-10 text-center">
+                <h2>Список маршрутов</h2>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Станция 1</th>
+                        <th>Станция 2</th>
+                        <th>Дата отправления</th>
+                        <th>Время отправления</th>
+                        <th>Дата прибытия</th>
+                        <th>Время прибытия</th>
+                        <th>Цена</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                     <#list model.routes as route>
+                     <tr>
+                         <td>${route.id}</td>
+                         <td>${route.pickUpPoint}</td>
+                         <td>${route.routePoint}</td>
+                         <td>${route.departureDate}</td>
+                         <td>${route.departureTime}</td>
+                         <td>${route.arrivalDate}</td>
+                         <td>${route.arrivalTime}</td>
+                         <td>${route.price}</td>
+
+
+                     </tr>
+                     </#list>
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+
+<footer class="container-fluid text-right">
+    <p>@springrain</p>
+</footer>
+
 </body>
 </html>

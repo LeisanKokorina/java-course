@@ -54,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
+            <a class="navbar-brand" href="/static/img/train-5-256.png">Logo</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -75,55 +75,73 @@
     </div>
 </nav>
 
+
+
 <div class="container-fluid text-center">
+
     <div class="row content">
         <div class="col-sm-2 sidenav">
 
+            <a href="/insert/route"> Добавить маршрут</a>
+            <br>
+            <a href="/insert/train"> Добавить поезд</a>
+            <br>
+            <a href="/trains?order_by=id"> Список поездов</a>
+            <br>
+            <a href="/routes?order_by=id"> Маршруты</a>
 
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="/routes?order_by=id">Список маршрутов
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/routes?order_by=train"> По id поезда</a></li>
-                    <li><a href="/routes?order_by=pickUpPoint">По станции отправления</a></li>
-                    <li><a href="/routes?order_by=routePoint">По станции прибытия</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Список поездов
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/trains?order_by=train_number">По  номеру поезда</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Маршрут
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/insert/route">Добавить маршрут</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="/trains?order_by=id">Поезд
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/insert/train">Добавить поезд</a></li>
-                </ul>
-            </li>
 
         </div>
 
+        <div class="col-sm-8 text-center">
+            <h3>Билет</h3>
+            <table>
+                <tr>
+                    <th>Поезд</th>
+                    <th>Станция отправления</th>
+                    <th>Станция прибытия</th>
+                    <th>Отправление</th>
+                    <th>Прибытие</th>
+                    <th>Цена</th>
 
-        <div class="col-sm-10 text-center">
-            <h1>Поздравляем, Вы добавили маршрут № ${model.id}  </h1>
+                </tr>
+
+                <tr>
+                    <td>${ticket.route.train.trainNumber}</td>
+                    <td>${ticket.route.pickUpPoint}</td>
+                    <td>${ticket.route.routePoint}</td>
+                    <td>${ticket.route.departureDate}
+                        <br>
+                    ${ticket.route.departureTime}</td>
+
+                    <td>${ticket.route.arrivalDate}
+                        <br> ${ticket.route.arrivalTime}</td>
+                    <div class="radio">
+                        <td>  <label><input type="radio" name="optradio" value="${ticket.route.price}">Взрослый билет</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" value="${ticket.route.price=ticket.route.price/2}">Детский билет</label>
+                    </div> </td>
+
+
+                </tr>
+
+            </table>
+            <a href="/insertPassengers"> Ввести данные пассажира</a>
+
+
         </div>
     </div>
 </div>
 
-
-<footer class="container-fluid text-right">
+<footer class="container-fluid text-center">
     <p>@springrain</p>
 </footer>
 
 </body>
 </html>
+
+
+
+
+
